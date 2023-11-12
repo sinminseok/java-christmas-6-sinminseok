@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.day.CalendarDay;
+import christmas.domain.event.Events;
 import christmas.domain.order.Order;
 import christmas.dto.OrderDto;
 import christmas.service.CalendarService;
@@ -35,6 +36,7 @@ public class MainController {
         outputView.printStartMessage();
         CalendarDay selectDay = registerVisitDay();
         Order order = registerOrder();
+        Events events = findApplicableEvents(order, selectDay);
     }
 
     private Order registerOrder() {
@@ -45,5 +47,8 @@ public class MainController {
         return calendarService.findByDay(inputView.readVisitDay());
     }
 
+    private Events findApplicableEvents(Order order, CalendarDay calendarDay) {
+        return eventService.findApplicableEvents(order, calendarDay);
+    }
 
 }
