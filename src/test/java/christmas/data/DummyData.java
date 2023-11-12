@@ -1,7 +1,7 @@
 package christmas.data;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event.EventRewardParameter;
+import christmas.domain.event.EventRewardContext;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuType;
@@ -27,8 +27,8 @@ public class DummyData {
         return new CalendarDay(LocalDate.of(2023, 12, 25), true);
     }
 
-    public static EventRewardParameter provideEventRewardParameterData() {
-        return new EventRewardParameter(provideOrderData(), provideCalendarDayData());
+    public static EventRewardContext provideEventRewardParameterData() {
+        return new EventRewardContext(provideOrderData(), provideCalendarDayData());
     }
 
     public static CalendarDay provideCalendarDayData() {

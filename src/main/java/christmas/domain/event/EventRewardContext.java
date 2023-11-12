@@ -7,11 +7,11 @@ import christmas.domain.order.Order;
 
 import java.time.LocalDate;
 
-public class EventRewardParameter {
+public class EventRewardContext {
     private final Order order;
     private final CalendarDay day;
 
-    public EventRewardParameter(Order order, CalendarDay day) {
+    public EventRewardContext(Order order, CalendarDay day) {
         this.order = order;
         this.day = day;
     }

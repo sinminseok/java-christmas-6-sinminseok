@@ -3,7 +3,7 @@ package christmas.domain.event_condition;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
-import christmas.domain.event.EventRewardParameter;
+import christmas.domain.event.EventRewardContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,7 +38,7 @@ public class WeekDayEventConditionTest {
     void 평일_할인_이벤트_보상은_디저트메뉴_갯수1개당_2023원_할인이다() {
         //given
         // provideEventRewardParameterData 는 3개의 디저트 메뉴를 제공한다.
-        EventRewardParameter eventRewardParameter = provideEventRewardParameterData();
+        EventRewardContext eventRewardParameter = provideEventRewardParameterData();
         //when
         EventReward eventReward = weekDayEventCondition.giveReward(eventRewardParameter);
         //then

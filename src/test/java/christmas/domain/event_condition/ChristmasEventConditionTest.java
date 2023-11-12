@@ -3,7 +3,7 @@ package christmas.domain.event_condition;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
-import christmas.domain.event.EventRewardParameter;
+import christmas.domain.event.EventRewardContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -38,7 +38,7 @@ public class ChristmasEventConditionTest {
     void 크리스마스_디데이_이벤트_보상이_올바르게_반환되는지_확인한다(int selectDay, int result) {
         //given
         CalendarDay calendarDay = new CalendarDay(LocalDate.of(2023, 12, selectDay), false);
-        EventRewardParameter rewardStandard = new EventRewardParameter(provideOrderData(), calendarDay);
+        EventRewardContext rewardStandard = new EventRewardContext(provideOrderData(), calendarDay);
         //when
         EventReward eventReward = christmasEventCondition.giveReward(rewardStandard);
         //then
