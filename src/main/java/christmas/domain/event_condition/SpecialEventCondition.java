@@ -12,7 +12,7 @@ public class SpecialEventCondition implements EventCondition {
     }
 
     @Override
-    public EventReward giveReward(EventRewardParameter rewardParameter) {
-        return null;
+    public EventReward giveReward(EventRewardParameter eventRewardParameter) {
+        return new EventReward(SPECIAL_EVENT_REWARD);
     }
 }

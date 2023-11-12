@@ -1,7 +1,10 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.CalendarDay;
+import christmas.domain.EventReward;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -28,5 +31,15 @@ public class SpecialEventConditionTest {
         boolean canApplyEvent = specialEventCondition.canApplyEvent(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
+    }
+
+    @Test
+    void 특별_할인_이벤트_보상은_총_금액에_적용될_1000원_할인이다() {
+        //given
+        CalendarDay day = new CalendarDay(LocalDate.of(2023, 12, 23), false);
+        //when
+        EventReward eventReward = specialEventCondition.giveReward(null);
+        //then
+        assertThat(eventReward.getRewardValue()).isEqualTo(1000);
     }
 }
