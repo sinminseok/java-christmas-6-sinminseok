@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.day.CalendarDay;
+import christmas.domain.order.Order;
 import christmas.dto.OrderDto;
 import christmas.service.CalendarService;
 import christmas.service.EventService;
@@ -33,7 +34,11 @@ public class MainController {
     public void run() {
         outputView.printStartMessage();
         CalendarDay selectDay = registerVisitDay();
-        OrderDto orderDto = inputView.readOrder();
+        Order order = registerOrder();
+    }
+
+    private Order registerOrder() {
+        return orderService.createOrder(inputView.readOrder());
     }
 
     private CalendarDay registerVisitDay() {
