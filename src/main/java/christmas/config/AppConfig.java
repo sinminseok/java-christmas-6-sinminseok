@@ -6,6 +6,7 @@ import christmas.repository.MenuRepository;
 import christmas.service.CalendarService;
 import christmas.service.EventService;
 import christmas.service.MenuService;
+import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -36,6 +37,10 @@ public class AppConfig {
 
     public static MenuService getMenuService() {
         return new MenuService(menuRepository);
+    }
+
+    public static OrderService getOrderService(){
+        return new OrderService(menuRepository);
     }
 
 }

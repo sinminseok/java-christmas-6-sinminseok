@@ -1,9 +1,11 @@
 package christmas.controller;
 
 import christmas.domain.day.CalendarDay;
+import christmas.dto.OrderDto;
 import christmas.service.CalendarService;
 import christmas.service.EventService;
 import christmas.service.MenuService;
+import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -15,13 +17,15 @@ public class MainController {
     private final OutputView outputView;
 
     private final MenuService menuService;
+    private final OrderService orderService;
     private final CalendarService calendarService;
     private final EventService eventService;
 
-    public MainController(MenuService menuService, CalendarService calendarService, EventService eventService) {
+    public MainController(MenuService menuService, OrderService orderService, CalendarService calendarService, EventService eventService) {
         this.inputView = getInputView();
         this.outputView = getOutputView();
         this.menuService = menuService;
+        this.orderService = orderService;
         this.calendarService = calendarService;
         this.eventService = eventService;
     }
@@ -29,9 +33,12 @@ public class MainController {
     public void run() {
         outputView.printStartMessage();
         CalendarDay selectDay = registerVisitDay();
+        OrderDto orderDto = inputView.readOrder();
     }
 
     private CalendarDay registerVisitDay() {
         return calendarService.findByDay(inputView.readVisitDay());
     }
+
+
 }
