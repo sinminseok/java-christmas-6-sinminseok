@@ -3,10 +3,7 @@ package christmas.config;
 import christmas.repository.CalendarRepository;
 import christmas.repository.EventRepository;
 import christmas.repository.MenuRepository;
-import christmas.service.CalendarService;
-import christmas.service.EventService;
-import christmas.service.MenuService;
-import christmas.service.OrderService;
+import christmas.service.*;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -39,7 +36,11 @@ public class AppConfig {
         return new MenuService(menuRepository);
     }
 
-    public static OrderService getOrderService(){
+    public static CustomerService getCustomerService() {
+        return new CustomerService();
+    }
+
+    public static OrderService getOrderService() {
         return new OrderService(menuRepository);
     }
 

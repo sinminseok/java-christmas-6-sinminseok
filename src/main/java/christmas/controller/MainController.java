@@ -4,10 +4,7 @@ import christmas.domain.day.CalendarDay;
 import christmas.domain.event.Events;
 import christmas.domain.order.Order;
 import christmas.dto.OrderDto;
-import christmas.service.CalendarService;
-import christmas.service.EventService;
-import christmas.service.MenuService;
-import christmas.service.OrderService;
+import christmas.service.*;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -18,15 +15,15 @@ public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    private final MenuService menuService;
+    private final CustomerService customerService;
     private final OrderService orderService;
     private final CalendarService calendarService;
     private final EventService eventService;
 
-    public MainController(MenuService menuService, OrderService orderService, CalendarService calendarService, EventService eventService) {
+    public MainController(CustomerService customerService, OrderService orderService, CalendarService calendarService, EventService eventService) {
         this.inputView = getInputView();
         this.outputView = getOutputView();
-        this.menuService = menuService;
+        this.customerService = customerService;
         this.orderService = orderService;
         this.calendarService = calendarService;
         this.eventService = eventService;
