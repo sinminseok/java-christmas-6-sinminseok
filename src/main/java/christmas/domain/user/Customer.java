@@ -14,4 +14,8 @@ public class Customer {
         this.order = order;
         this.calendarDay = calendarDay;
     }
+
+    public Integer findBeforeDiscountPrice() {
+        return order.getOrderPrice();
+    }
 }
