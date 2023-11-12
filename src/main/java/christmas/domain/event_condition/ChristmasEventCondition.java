@@ -6,6 +6,8 @@ import christmas.domain.EventReward;
 import java.time.LocalDate;
 
 public class ChristmasEventCondition implements EventCondition {
+    private static final Integer START_DISCOUNT_PRICE = 1000;
+    private static final Integer INCREASE_DISCOUNT_PRICE_PER_DAY = 100;
     private static final LocalDate START_DATE = LocalDate.of(2023,12,1);
     private static final LocalDate END_DATE = LocalDate.of(2023,12,25);
 
@@ -15,7 +17,9 @@ public class ChristmasEventCondition implements EventCondition {
     }
 
     @Override
-    public EventReward giveReward() {
-        return null;
+    public EventReward giveReward(EventRewardParameter rewardParameter) {
+        int daysFromStart = rewardParameter.calculateDaysSinceStart(START_DATE);
+        int discountAmount = START_DISCOUNT_PRICE + (daysFromStart * INCREASE_DISCOUNT_PRICE_PER_DAY);
+        return new EventReward(discountAmount);
     }
 }

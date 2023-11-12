@@ -1,12 +1,15 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.CalendarDay;
+import christmas.domain.EventReward;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
 
+import static christmas.data.DummyData.provideOrderData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ChristmasEventConditionTest {
@@ -27,5 +30,17 @@ public class ChristmasEventConditionTest {
         boolean canApplyEvent = christmasEventCondition.canApplyEvent(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, 1000", "10, 1900", "25, 3400"})
+    void 크리스마스_디데이_이벤트_보상이_올바르게_반환되는지_확인한다(int selectDay, int result) {
+        //given
+        CalendarDay calendarDay = new CalendarDay(LocalDate.of(2023, 12, selectDay), false);
+        EventRewardParameter rewardStandard = new EventRewardParameter(provideOrderData(), calendarDay);
+        //when
+        EventReward eventReward = christmasEventCondition.giveReward(rewardStandard);
+        //then
+        assertThat(eventReward.getRewardValue()).isEqualTo(result);
     }
 }

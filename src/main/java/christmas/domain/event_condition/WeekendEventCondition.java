@@ -16,7 +16,7 @@ public class WeekendEventCondition implements EventCondition {
     }
 
     @Override
-    public EventReward giveReward() {
+    public EventReward giveReward(EventRewardParameter rewardParameter) {
         return null;
     }
 }
