@@ -10,4 +10,8 @@ public class EventPeriod {
         this.startDay = startDay;
         this.endDay = endDay;
     }
+
+    public boolean containPeriod(LocalDate localDate) {
+        return !localDate.isBefore(startDay) && !localDate.isAfter(endDay);
+    }
 }

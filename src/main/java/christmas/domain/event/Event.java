@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.EventCondition;
 
 import java.time.LocalDate;
@@ -17,5 +18,13 @@ public class Event {
 
     public static Event of(String name, LocalDate startDate, LocalDate endDate, EventCondition condition) {
         return new Event(name, new EventPeriod(startDate, endDate), condition);
+    }
+
+    public boolean isApplicable(EventApplyParameter eventApplyParameter) {
+        return containsDay(eventApplyParameter.getCalendarDay()) && condition.canApplyEvent(eventApplyParameter);
+    }
+
+    private boolean containsDay(CalendarDay day) {
+        return period.containPeriod(day.getDay());
     }
 }

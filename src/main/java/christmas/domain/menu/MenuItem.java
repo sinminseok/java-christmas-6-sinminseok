@@ -15,6 +15,10 @@ public class MenuItem {
         return menu.isSameMenuType(menuType);
     }
 
+    public Integer getMenuItemPrice() {
+        return menu.getPrice();
+    }
+
     public Integer getCount() {
         return count;
     }

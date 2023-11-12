@@ -21,6 +21,10 @@ public class Menu {
         return this.name.equals(name);
     }
 
+    public Integer getPrice() {
+        return price;
+    }
+
     public boolean isSameMenuType(MenuType menuType) {
         return this.menuType.equals(menuType);
     }

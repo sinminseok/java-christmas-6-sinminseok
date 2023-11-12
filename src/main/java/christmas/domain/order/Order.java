@@ -11,6 +11,12 @@ public class Order {
         this.menuItems = menuItems;
     }
 
+    public Integer getOrderPrice() {
+        return menuItems.stream()
+                .mapToInt(MenuItem::getMenuItemPrice)
+                .sum();
+    }
+
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
