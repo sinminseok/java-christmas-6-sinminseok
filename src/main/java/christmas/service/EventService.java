@@ -6,6 +6,8 @@ import christmas.domain.event.Events;
 import christmas.domain.order.Order;
 import christmas.repository.EventRepository;
 
+import java.util.ArrayList;
+
 public class EventService {
     private final EventRepository eventRepository;
 
@@ -14,7 +16,10 @@ public class EventService {
     }
 
     public Events findApplicableEvents(Order order, CalendarDay day) {
-        EventApplyParameter eventApplyParameter = new EventApplyParameter(order.getOrderPrice(), day);
-        return new Events(eventRepository.findCanApplyEvents(eventApplyParameter));
+        if(order.canApplyEvent()){
+            EventApplyParameter eventApplyParameter = new EventApplyParameter(order.getOrderPrice(), day);
+            return new Events(eventRepository.findCanApplyEvents(eventApplyParameter));
+        }
+        return new Events(new ArrayList<>());
     }
 }
