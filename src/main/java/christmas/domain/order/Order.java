@@ -15,7 +15,7 @@ public class Order {
 
     public Integer getOrderPrice() {
         return menuItems.stream()
-                .mapToInt(MenuItem::getMenuItemPrice)
+                .mapToInt(MenuItem::calculatePrice)
                 .sum();
     }
 
