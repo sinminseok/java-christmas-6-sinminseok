@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.Events;
 import christmas.domain.order.Order;
 import christmas.repository.EventRepository;
@@ -17,7 +17,7 @@ public class EventService {
 
     public Events findApplicableEvents(Order order, CalendarDay day) {
         if(order.canApplyEvent()){
-            EventApplyParameter eventApplyParameter = new EventApplyParameter(order.getOrderPrice(), day);
+            EventConditionContext eventApplyParameter = new EventConditionContext(order.getOrderPrice(), day);
             return new Events(eventRepository.findCanApplyEvents(eventApplyParameter));
         }
         return new Events(new ArrayList<>());

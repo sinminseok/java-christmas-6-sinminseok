@@ -1,7 +1,7 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardParameter;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +26,7 @@ public class ChristmasEventConditionTest {
     @CsvSource(value = {"24, true", "26, false"})
     void 크리스마스_디데이_이벤트_참여_가능_여부를_확인한다(int selectDay, boolean result) {
         //given
-        EventApplyParameter eventApplyParameter = new EventApplyParameter(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
+        EventConditionContext eventApplyParameter = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
         //when
         boolean canApplyEvent = christmasEventCondition.canApplyEvent(eventApplyParameter);
         //then

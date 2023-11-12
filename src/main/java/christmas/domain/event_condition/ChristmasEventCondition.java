@@ -1,6 +1,6 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardParameter;
 
@@ -13,7 +13,7 @@ public class ChristmasEventCondition implements EventCondition {
     private static final LocalDate END_DATE = LocalDate.of(2023,12,25);
 
     @Override
-    public boolean canApplyEvent(EventApplyParameter eventApplyParameter) {
+    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
         return eventApplyParameter.isContainDay(START_DATE, END_DATE);
     }
 

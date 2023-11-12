@@ -1,7 +1,7 @@
 package christmas.domain.event_condition;
 
 
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardParameter;
 import christmas.domain.menu.MenuType;
@@ -12,7 +12,7 @@ public class WeekendEventCondition implements EventCondition {
     private static final Integer DISCOUNT_PRICE_PER_MAIN_MENU = 2023;
 
     @Override
-    public boolean canApplyEvent(EventApplyParameter eventApplyParameter) {
+    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
         DayOfWeek dayOfWeek = eventApplyParameter.getCalendarDay().getDayOfWeek();
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }

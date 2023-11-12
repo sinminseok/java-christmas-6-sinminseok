@@ -19,7 +19,7 @@ public class EventTest {
     void canApplyEvent_메서드는_주문과_선택한_날짜를_기반으로_이벤트가_적용가능한지_판별한다(Event event, boolean result) {
         //given
         CalendarDay calendarDay = new CalendarDay(LocalDate.of(2023, 12, 25), true);
-        EventApplyParameter eventApplyParameter = new EventApplyParameter(150000, calendarDay);
+        EventConditionContext eventApplyParameter = new EventConditionContext(150000, calendarDay);
         //when
         boolean canApplyEvent = event.isApplicable(eventApplyParameter);
         //then

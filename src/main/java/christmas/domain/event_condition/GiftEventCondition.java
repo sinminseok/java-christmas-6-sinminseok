@@ -1,6 +1,6 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardParameter;
 import christmas.domain.menu.Menu;
@@ -13,7 +13,7 @@ public class GiftEventCondition implements EventCondition {
     private static final Menu CHAMPAGNE = Menu.of("샴페인", 25000, MenuType.DRINKING);
     private static final MenuItem GIFT_EVENT_REWARD = new MenuItem(CHAMPAGNE, REWARD_AMOUNT);
     @Override
-    public boolean canApplyEvent(EventApplyParameter eventApplyParameter) {
+    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
         return GIFT_EVENT_TOTAL_PRICE_STANDARD <= eventApplyParameter.getOrderPrice();
     }
 

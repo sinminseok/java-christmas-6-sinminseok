@@ -1,7 +1,7 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuItem;
@@ -29,7 +29,7 @@ public class GiftEventConditionTest {
     @CsvSource(value = {"110000, false", "120000, true"})
     void 증정_이벤트_참여_가능_여부를_확인한다(Integer orderPrice, boolean result) {
         //given
-        EventApplyParameter eventApplyParameter = new EventApplyParameter(orderPrice, new CalendarDay(LocalDate.of(2023, 12, 25), false));
+        EventConditionContext eventApplyParameter = new EventConditionContext(orderPrice, new CalendarDay(LocalDate.of(2023, 12, 25), false));
         //when
         boolean canApplyEvent = giftEventCondition.canApplyEvent(eventApplyParameter);
         //then

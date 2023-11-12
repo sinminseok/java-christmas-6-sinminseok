@@ -1,6 +1,6 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardParameter;
 
@@ -8,7 +8,7 @@ public class SpecialEventCondition implements EventCondition {
     private static final Integer SPECIAL_EVENT_REWARD = 1000;
 
     @Override
-    public boolean canApplyEvent(EventApplyParameter eventApplyParameter) {
+    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
         return eventApplyParameter.getHasStar();
     }
 

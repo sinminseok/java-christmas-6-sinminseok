@@ -20,8 +20,8 @@ public class Event {
         return new Event(name, new EventPeriod(startDate, endDate), condition);
     }
 
-    public boolean isApplicable(EventApplyParameter eventApplyParameter) {
-        return containsDay(eventApplyParameter.getCalendarDay()) && condition.canApplyEvent(eventApplyParameter);
+    public boolean isApplicable(EventConditionContext context) {
+        return containsDay(context.getCalendarDay()) && condition.canApplyEvent(context);
     }
 
     private boolean containsDay(CalendarDay day) {

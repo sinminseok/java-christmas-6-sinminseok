@@ -1,7 +1,7 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ public class SpecialEventConditionTest {
     void 특별_할인_이벤트_참여_가능_여부를_확인한다(boolean hasStar, boolean result) {
         //given
         CalendarDay day = new CalendarDay(LocalDate.of(2023, 12, 23), hasStar);
-        EventApplyParameter eventApplyParameter = new EventApplyParameter(1000, day);
+        EventConditionContext eventApplyParameter = new EventConditionContext(1000, day);
         //when
         boolean canApplyEvent = specialEventCondition.canApplyEvent(eventApplyParameter);
         //then

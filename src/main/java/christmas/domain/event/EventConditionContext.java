@@ -4,11 +4,11 @@ import christmas.domain.day.CalendarDay;
 
 import java.time.LocalDate;
 
-public class EventApplyParameter {
+public class EventConditionContext {
     private final Integer orderPrice;
     private final CalendarDay calendarDay;
 
-    public EventApplyParameter(Integer orderPrice, CalendarDay calendarDay) {
+    public EventConditionContext(Integer orderPrice, CalendarDay calendarDay) {
         this.orderPrice = orderPrice;
         this.calendarDay = calendarDay;
     }
