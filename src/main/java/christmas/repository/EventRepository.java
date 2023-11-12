@@ -1,11 +1,15 @@
 package christmas.repository;
 
+import christmas.domain.day.CalendarDay;
 import christmas.domain.event.Event;
+import christmas.domain.event.EventApplyParameter;
 import christmas.domain.event_condition.*;
+import christmas.domain.order.Order;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EventRepository {
     private static final List<Event> events = new ArrayList<>();
@@ -16,5 +20,11 @@ public class EventRepository {
         events.add(Event.of("주말 할인", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new WeekendEventCondition()));
         events.add(Event.of("특별 할인", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new SpecialEventCondition()));
         events.add(Event.of("증정 이벤트", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new GiftEventCondition()));
+    }
+
+    public List<Event> findCanApplyEvents(EventApplyParameter eventApplyParameter) {
+        return events.stream()
+                .filter(event -> event.isApplicable(eventApplyParameter))
+                .collect(Collectors.toList());
     }
 }
