@@ -24,4 +24,8 @@ public class EventApplyParameter {
     public boolean getHasStar() {
         return calendarDay.getHasStar();
     }
+
+    public CalendarDay getCalendarDay() {
+        return calendarDay;
+    }
 }
