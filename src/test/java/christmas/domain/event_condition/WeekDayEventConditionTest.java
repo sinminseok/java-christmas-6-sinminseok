@@ -33,7 +33,7 @@ public class WeekDayEventConditionTest {
     }
 
     @Test
-    void 평일_할인_이벤트_보상은_메인메뉴_갯수1개당_2023원_할인이다() {
+    void 평일_할인_이벤트_보상은_디저트메뉴_갯수1개당_2023원_할인이다() {
         //given
         // provideEventRewardParameterData 는 3개의 디저트 메뉴를 제공한다.
         EventRewardParameter eventRewardParameter = provideEventRewardParameterData();

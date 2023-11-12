@@ -3,6 +3,7 @@ package christmas.domain.event_condition;
 
 import christmas.domain.EventCondition;
 import christmas.domain.EventReward;
+import christmas.domain.MenuType;
 
 import java.time.DayOfWeek;
 
@@ -17,6 +18,7 @@ public class WeekendEventCondition implements EventCondition {
 
     @Override
     public EventReward giveReward(EventRewardParameter rewardParameter) {
-        return null;
+        int discountPrice = rewardParameter.countMenuByType(MenuType.MAIN) * DISCOUNT_PRICE_PER_MAIN_MENU;
+        return new EventReward(discountPrice);
     }
 }
