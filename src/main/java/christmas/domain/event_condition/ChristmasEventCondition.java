@@ -1,6 +1,7 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.EventCondition;
+import christmas.domain.EventReward;
 
 import java.time.LocalDate;
 
@@ -11,5 +12,10 @@ public class ChristmasEventCondition implements EventCondition {
     @Override
     public boolean canApplyEvent(EventApplyParameter eventApplyParameter) {
         return eventApplyParameter.isContainDay(START_DATE, END_DATE);
+    }
+
+    @Override
+    public EventReward giveReward() {
+        return null;
     }
 }
