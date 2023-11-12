@@ -2,9 +2,12 @@ package christmas.repository;
 
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
+import christmas.utils.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static christmas.utils.ErrorConstants.ORDER_ERROR;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -25,5 +28,12 @@ public class MenuRepository {
         menus.add(Menu.of("제로콜라", 3000, MenuType.DRINKING));
         menus.add(Menu.of("레드와인", 6000, MenuType.DRINKING));
         menus.add(Menu.of("샴페인", 25000, MenuType.DRINKING));
+    }
+
+    public static Menu findByName(String name) {
+        return menus.stream()
+                .filter(menu -> menu.isSameName(name))
+                .findFirst()
+                .orElseThrow(() -> new ErrorMessage(ORDER_ERROR));
     }
 }
