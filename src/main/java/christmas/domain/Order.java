@@ -1,11 +1,11 @@
 package christmas.domain;
 
-import java.util.Map;
+import java.util.List;
 
 public class Order {
-    private final Map<Menu, Integer> orders;
+    private final List<MenuItem> menuItems;
 
-    public Order(Map<Menu, Integer> orders) {
-        this.orders = orders;
+    public Order(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 }
