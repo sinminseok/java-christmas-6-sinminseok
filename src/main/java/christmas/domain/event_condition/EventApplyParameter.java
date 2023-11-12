@@ -20,4 +20,8 @@ public class EventApplyParameter {
     public boolean isContainDay(LocalDate startDate, LocalDate endDate) {
         return !this.calendarDay.getDay().isBefore(startDate) && !this.calendarDay.getDay().isAfter(endDate);
     }
+
+    public boolean getHasStar() {
+        return calendarDay.getHasStar();
+    }
 }
