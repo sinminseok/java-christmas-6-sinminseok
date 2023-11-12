@@ -16,7 +16,7 @@ public class MenuItem {
     }
 
     public Integer getMenuItemPrice() {
-        return menu.getPrice();
+        return menu.getPrice() * count;
     }
 
     public Integer getCount() {
