@@ -23,7 +23,7 @@ public class DummyData {
         return new CalendarDay(LocalDate.of(2023, 12, 25), true);
     }
 
-    public static EventRewardParameter provideRewardStandardData() {
+    public static EventRewardParameter provideEventRewardParameterData() {
         return new EventRewardParameter(provideOrderData(), provideCalendarDayData());
     }
 

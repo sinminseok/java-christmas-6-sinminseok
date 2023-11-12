@@ -17,6 +17,10 @@ public class Menu {
         return new Menu(name, price, menuType);
     }
 
+    public boolean isSameMenuType(MenuType menuType) {
+        return this.menuType.equals(menuType);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

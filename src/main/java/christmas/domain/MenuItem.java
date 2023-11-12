@@ -11,6 +11,14 @@ public class MenuItem {
         this.count = count;
     }
 
+    public boolean compareMenuType(MenuType menuType) {
+        return menu.isSameMenuType(menuType);
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

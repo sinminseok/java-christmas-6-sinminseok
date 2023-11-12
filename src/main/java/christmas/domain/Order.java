@@ -8,4 +8,8 @@ public class Order {
     public Order(List<MenuItem> menuItems) {
         this.menuItems = menuItems;
     }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
 }

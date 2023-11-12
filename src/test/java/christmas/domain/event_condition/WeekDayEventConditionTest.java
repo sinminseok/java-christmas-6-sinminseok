@@ -1,12 +1,15 @@
 package christmas.domain.event_condition;
 
 import christmas.domain.CalendarDay;
+import christmas.domain.EventReward;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
 
+import static christmas.data.DummyData.provideEventRewardParameterData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WeekDayEventConditionTest {
@@ -27,5 +30,16 @@ public class WeekDayEventConditionTest {
         boolean canApplyEvent = weekDayEventCondition.canApplyEvent(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isTrue();
+    }
+
+    @Test
+    void 평일_할인_이벤트_보상은_메인메뉴_갯수1개당_2023원_할인이다() {
+        //given
+        // provideEventRewardParameterData 는 3개의 디저트 메뉴를 제공한다.
+        EventRewardParameter eventRewardParameter = provideEventRewardParameterData();
+        //when
+        EventReward eventReward = weekDayEventCondition.giveReward(eventRewardParameter);
+        //then
+        assertThat(eventReward.getRewardValue()).isEqualTo(6069);
     }
 }
