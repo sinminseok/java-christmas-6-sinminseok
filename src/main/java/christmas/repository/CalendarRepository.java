@@ -22,4 +22,11 @@ public class CalendarRepository {
     private static boolean isStarDay(LocalDate date) {
         return date.getDayOfWeek() == DayOfWeek.SUNDAY || date.getDayOfMonth() == 25;
     }
+
+    public static CalendarDay findByDay(int day) {
+        return DAYS.stream()
+                .filter(calendarDay -> calendarDay.isSameDay(START_DATE.withDayOfMonth(day)))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
 }

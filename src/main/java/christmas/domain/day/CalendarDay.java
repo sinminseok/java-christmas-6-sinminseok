@@ -18,6 +18,10 @@ public class CalendarDay {
         return day;
     }
 
+    public boolean isSameDay(LocalDate day) {
+        return this.day.equals(day);
+    }
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }

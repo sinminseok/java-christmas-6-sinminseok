@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.day.CalendarDay;
 import christmas.service.CalendarService;
 import christmas.service.EventService;
 import christmas.service.MenuService;
@@ -26,6 +27,11 @@ public class MainController {
     }
 
     public void run() {
+        outputView.printStartMessage();
+        CalendarDay selectDay = registerVisitDay();
+    }
 
+    private CalendarDay registerVisitDay() {
+        return calendarService.findByDay(inputView.readVisitDay());
     }
 }
