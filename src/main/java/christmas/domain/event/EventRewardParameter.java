@@ -1,9 +1,9 @@
-package christmas.domain.event_condition;
+package christmas.domain.event;
 
-import christmas.domain.CalendarDay;
-import christmas.domain.MenuItem;
-import christmas.domain.MenuType;
-import christmas.domain.Order;
+import christmas.domain.day.CalendarDay;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuType;
+import christmas.domain.order.Order;
 
 import java.time.LocalDate;
 

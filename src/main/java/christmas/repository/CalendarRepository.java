@@ -1,6 +1,6 @@
 package christmas.repository;
 
-import christmas.domain.CalendarDay;
+import christmas.domain.day.CalendarDay;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

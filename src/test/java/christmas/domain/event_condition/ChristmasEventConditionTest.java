@@ -1,8 +1,9 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.CalendarDay;
-import christmas.domain.EventReward;
-import org.assertj.core.api.Assertions;
+import christmas.domain.day.CalendarDay;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.event.EventRewardParameter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

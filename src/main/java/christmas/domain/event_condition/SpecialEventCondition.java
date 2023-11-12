@@ -1,7 +1,8 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.EventCondition;
-import christmas.domain.EventReward;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.event.EventRewardParameter;
 
 public class SpecialEventCondition implements EventCondition {
     private static final Integer SPECIAL_EVENT_REWARD = 1000;

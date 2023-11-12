@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.event;
+
+import christmas.domain.event_condition.EventCondition;
 
 public class Event {
     private final String name;

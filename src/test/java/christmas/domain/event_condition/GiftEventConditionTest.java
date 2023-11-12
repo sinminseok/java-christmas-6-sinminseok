@@ -1,6 +1,11 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.*;
+import christmas.domain.day.CalendarDay;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

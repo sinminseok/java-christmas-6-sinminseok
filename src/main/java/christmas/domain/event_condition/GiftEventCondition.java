@@ -1,6 +1,11 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.*;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.event.EventRewardParameter;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuType;
 
 public class GiftEventCondition implements EventCondition {
     private static final Integer GIFT_EVENT_TOTAL_PRICE_STANDARD = 120000;

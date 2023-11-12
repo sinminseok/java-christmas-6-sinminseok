@@ -1,6 +1,6 @@
-package christmas.domain.event_condition;
+package christmas.domain.event;
 
-import christmas.domain.CalendarDay;
+import christmas.domain.day.CalendarDay;
 
 import java.time.LocalDate;
 

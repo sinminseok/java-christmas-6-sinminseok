@@ -1,9 +1,10 @@
 package christmas.domain.event_condition;
 
 
-import christmas.domain.EventCondition;
-import christmas.domain.EventReward;
-import christmas.domain.MenuType;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.event.EventRewardParameter;
+import christmas.domain.menu.MenuType;
 
 import java.time.DayOfWeek;
 

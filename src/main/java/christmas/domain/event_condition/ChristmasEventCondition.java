@@ -1,7 +1,8 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.EventCondition;
-import christmas.domain.EventReward;
+import christmas.domain.event.EventApplyParameter;
+import christmas.domain.event.EventReward;
+import christmas.domain.event.EventRewardParameter;
 
 import java.time.LocalDate;
 

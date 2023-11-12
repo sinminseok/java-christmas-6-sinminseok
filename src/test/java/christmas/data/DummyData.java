@@ -1,7 +1,11 @@
 package christmas.data;
 
-import christmas.domain.*;
-import christmas.domain.event_condition.EventRewardParameter;
+import christmas.domain.day.CalendarDay;
+import christmas.domain.event.EventRewardParameter;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuType;
+import christmas.domain.order.Order;
 
 import java.time.LocalDate;
 import java.util.List;

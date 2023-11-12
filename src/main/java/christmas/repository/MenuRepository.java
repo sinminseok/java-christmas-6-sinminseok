@@ -1,7 +1,7 @@
 package christmas.repository;
 
-import christmas.domain.Menu;
-import christmas.domain.MenuType;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
 
 import java.util.ArrayList;
 import java.util.List;
