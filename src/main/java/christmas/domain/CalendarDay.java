@@ -13,4 +13,16 @@ public class CalendarDay {
         this.dayOfWeek = day.getDayOfWeek();
         this.hasStar = hasStar;
     }
+
+    public LocalDate getDay() {
+        return day;
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public Boolean getHasStar() {
+        return hasStar;
+    }
 }
