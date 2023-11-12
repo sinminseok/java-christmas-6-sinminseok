@@ -1,7 +1,9 @@
 package christmas.domain.event_condition;
 
-import christmas.domain.CalendarDay;
+import christmas.domain.*;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -27,5 +29,16 @@ public class GiftEventConditionTest {
         boolean canApplyEvent = giftEventCondition.canApplyEvent(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
+    }
+
+    @Test
+    void 증정_이벤트_보상은_샴페인_1병이다() {
+        //given
+        Menu champagne = Menu.of("샴페인", 25000, MenuType.DRINKING);
+        MenuItem reward = new MenuItem(champagne, 1);
+        //when
+        EventReward eventReward = giftEventCondition.giveReward(null);
+        //then
+        Assertions.assertThat(eventReward.getRewardValue()).isEqualTo(reward);
     }
 }
