@@ -15,18 +15,20 @@ public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    private final PlanService customerService;
+    private final PlanService planService;
     private final OrderService orderService;
     private final CalendarService calendarService;
     private final EventService eventService;
+    private final CustomerService customerService;
 
-    public MainController(PlanService customerService, OrderService orderService, CalendarService calendarService, EventService eventService) {
+    public MainController(PlanService planService, OrderService orderService, CalendarService calendarService, EventService eventService, CustomerService customerService) {
         this.inputView = getInputView();
         this.outputView = getOutputView();
-        this.customerService = customerService;
+        this.planService = planService;
         this.orderService = orderService;
         this.calendarService = calendarService;
         this.eventService = eventService;
+        this.customerService = customerService;
     }
 
     public void run() {
@@ -34,19 +36,19 @@ public class MainController {
         CalendarDay selectDay = registerVisitDay();
         Order order = registerOrder();
         Events events = findApplicableEvents(order, selectDay);
-        Plan plan = customerService.createPlanner(events, order, selectDay);
+        Plan plan = planService.createPlanner(events, order, selectDay);
         showPlan(plan, selectDay, order);
     }
 
     private void showPlan(Plan plan, CalendarDay calendarDay, Order order) {
         outputView.printEventPreview(calendarDay.getDay());
         outputView.printOrderMenu(orderService.findOrderMenus(order));
-        outputView.printBeforeDiscountPrice(customerService.findBeforeDiscountPrice(plan));
-        outputView.printGiftReward(customerService.findGiftReward(plan));
-        outputView.printRewards(customerService.findRewards(plan));
-        outputView.printTotalDiscountPrice(customerService.findTotalRewardPrice(plan));
-        outputView.printAfterDiscountPrice(customerService.findPayPrice(plan));
-        outputView.printBadge(customerService.findBadge(plan));
+        outputView.printBeforeDiscountPrice(planService.findBeforeDiscountPrice(plan));
+        outputView.printGiftReward(planService.findGiftReward(plan));
+        outputView.printRewards(planService.findRewards(plan));
+        outputView.printTotalDiscountPrice(planService.findTotalRewardPrice(plan));
+        outputView.printAfterDiscountPrice(planService.findPayPrice(plan));
+        outputView.printBadge(planService.findBadge(plan));
     }
 
 

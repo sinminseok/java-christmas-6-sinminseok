@@ -6,7 +6,7 @@ import static christmas.config.AppConfig.*;
 
 public class Application {
     public static void main(String[] args) {
-        MainController mainController = new MainController(getCustomerService(), getOrderService(), getCalendarService(), getEventService());
+        MainController mainController = new MainController(getPlanService(), getOrderService(), getCalendarService(), getEventService(), getCustomerService());
         mainController.run();
     }
 }
