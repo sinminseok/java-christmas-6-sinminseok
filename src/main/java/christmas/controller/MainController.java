@@ -10,6 +10,7 @@ import christmas.view.OutputView;
 
 import static christmas.config.AppConfig.getInputView;
 import static christmas.config.AppConfig.getOutputView;
+import static christmas.utils.Retry.retryOnException;
 
 public class MainController {
     private final InputView inputView;
@@ -33,8 +34,8 @@ public class MainController {
 
     public void run() {
         outputView.printStartMessage();
-        CalendarDay selectDay = registerVisitDay();
-        Order order = registerOrder();
+        CalendarDay selectDay = retryOnException(this::registerVisitDay);
+        Order order = retryOnException(this::registerOrder);
         Events events = findApplicableEvents(order, selectDay);
         Plan plan = planService.createPlanner(events, order, selectDay);
         showPlan(plan, selectDay, order);
