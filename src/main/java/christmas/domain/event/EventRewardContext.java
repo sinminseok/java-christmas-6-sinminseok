@@ -23,7 +23,7 @@ public class EventRewardContext {
                 .sum();
     }
 
-    public int calculateDaysSinceStart(LocalDate startDate) {
+    public int calculateDaysBetweenStartAndGivenDate(LocalDate startDate) {
         return (int) startDate.until(day.getDay(), java.time.temporal.ChronoUnit.DAYS);
     }
 }

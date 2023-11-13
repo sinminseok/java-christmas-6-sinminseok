@@ -20,7 +20,7 @@ public class ChristmasEventCondition implements EventCondition {
 
     @Override
     public EventReward giveReward(EventRewardContext rewardParameter) {
-        int daysFromStart = rewardParameter.calculateDaysSinceStart(START_DATE);
+        int daysFromStart = rewardParameter.calculateDaysBetweenStartAndGivenDate(START_DATE);
         int discountAmount = START_DISCOUNT_PRICE + (daysFromStart * INCREASE_DISCOUNT_PRICE_PER_DAY);
         return new EventReward(discountAmount);
     }
