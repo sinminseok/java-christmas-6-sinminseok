@@ -11,19 +11,19 @@ import java.util.List;
 
 import static christmas.data.DummyData.*;
 
-public class CustomerTest {
+public class PlanTest {
 
-    private Plan customer;
+    private Plan plan;
 
     @BeforeEach
     void setInit() {
-        customer = new Plan(provideEventsData(), provideOrderData(), provideCalendarDay());
+        plan = new Plan(provideEventsData(), provideOrderData(), provideCalendarDay());
     }
 
     @Test
     void findBeforeDiscountPrice_메서드는_할인전_주문총_금액을_찾는다() {
         //when
-        Integer beforeDiscountPrice = customer.findBeforeDiscountPrice();
+        Integer beforeDiscountPrice = plan.findBeforeDiscountPrice();
         //then
         Assertions.assertThat(beforeDiscountPrice).isEqualTo(300000);
     }
@@ -31,7 +31,7 @@ public class CustomerTest {
     @Test
     void findAllReward_메서드는_적용된_모든_혜택_내역을_찾는다() {
         //when
-        List<Reward> allReward = customer.findAllReward();
+        List<Reward> allReward = plan.findAllReward();
         //then
         Assertions.assertThat(allReward.size()).isEqualTo(5);
     }
@@ -39,7 +39,7 @@ public class CustomerTest {
     @Test
     void findMenuRewards_메서드는_적용된_이벤트들_중_증정_메뉴를_찾는다() {
         //when
-        List<RewardMenu> menuRewards = customer.findMenuRewards();
+        List<RewardMenu> menuRewards = plan.findMenuRewards();
         //then
         Assertions.assertThat(menuRewards.size()).isEqualTo(1);
     }
@@ -47,7 +47,7 @@ public class CustomerTest {
     @Test
     void calculateTotalRewardPrice_메서드는_적용된_총_혜택_금액을_계산한다(){
         //when
-        Integer rewardPrice = customer.calculateTotalRewardPrice();
+        Integer rewardPrice = plan.calculateTotalRewardPrice();
         //then
         Assertions.assertThat(rewardPrice).isEqualTo(41538);
     }
