@@ -17,6 +17,14 @@ public class RewardMenu {
         return menu.getPrice() * count;
     }
 
+    public String getMenuName() {
+        return menu.getName();
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
