@@ -28,6 +28,10 @@ public class DummyData {
         return new Events(events);
     }
 
+    public static EventRewardContext provideEventRewardContextData() {
+        return new EventRewardContext(provideOrderData(), provideCalendarDay());
+    }
+
     public static Order provideOrderData() {
         Menu menu1 = Menu.of("메뉴1", 50000, MenuType.MAIN);
         Menu menu2 = Menu.of("메뉴2", 50000, MenuType.MAIN);
