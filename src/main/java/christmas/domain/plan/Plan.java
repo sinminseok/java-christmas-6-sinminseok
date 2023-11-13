@@ -32,7 +32,7 @@ public class Plan {
 
     public List<RewardMenu> findMenuRewards() {
         EventRewardContext context = createRewardContext();
-        return events.findRewardMenus(context);
+        return events.findMenuRewards(context);
     }
 
     public Integer calculateTotalRewardPrice() {
@@ -44,7 +44,7 @@ public class Plan {
 
     private Integer calculateDiscountRewardPrice() {
         EventRewardContext context = createRewardContext();
-        List<Reward> discountRewards = events.findDiscountReward(context);
+        List<Reward> discountRewards = events.findDiscountRewards(context);
         return discountRewards.stream()
                 .mapToInt(rewardDiscount -> rewardDiscount.getDiscountPrice())
                 .sum();
