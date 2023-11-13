@@ -1,4 +1,4 @@
-package christmas.domain.user;
+package christmas.domain.plan;
 
 
 import christmas.domain.event.Reward;
@@ -13,11 +13,11 @@ import static christmas.data.DummyData.*;
 
 public class CustomerTest {
 
-    private Customer customer;
+    private Plan customer;
 
     @BeforeEach
     void setInit() {
-        customer = new Customer(provideEventsData(), provideOrderData(), provideCalendarDay());
+        customer = new Plan(provideEventsData(), provideOrderData(), provideCalendarDay());
     }
 
     @Test

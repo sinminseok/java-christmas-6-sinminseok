@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.domain.user.Badge;
+import christmas.domain.plan.Badge;
 import christmas.dto.MenuItemDto;
 import christmas.dto.RewardDto;
 

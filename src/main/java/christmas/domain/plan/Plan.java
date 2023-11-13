@@ -1,4 +1,4 @@
-package christmas.domain.user;
+package christmas.domain.plan;
 
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventRewardContext;
@@ -9,12 +9,12 @@ import christmas.domain.order.Order;
 
 import java.util.List;
 
-public class Customer {
+public class Plan {
     private final Events events;
     private final Order order;
     private final CalendarDay calendarDay;
 
-    public Customer(Events events, Order order, CalendarDay calendarDay) {
+    public Plan(Events events, Order order, CalendarDay calendarDay) {
         this.events = events;
         this.order = order;
         this.calendarDay = calendarDay;

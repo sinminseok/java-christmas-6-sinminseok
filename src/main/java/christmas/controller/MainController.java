@@ -3,8 +3,7 @@ package christmas.controller;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.Events;
 import christmas.domain.order.Order;
-import christmas.domain.user.Customer;
-import christmas.dto.OrderDto;
+import christmas.domain.plan.Plan;
 import christmas.service.*;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -35,11 +34,11 @@ public class MainController {
         CalendarDay selectDay = registerVisitDay();
         Order order = registerOrder();
         Events events = findApplicableEvents(order, selectDay);
-        Customer customer = customerService.createPlanner(events, order, selectDay);
+        Plan customer = customerService.createPlanner(events, order, selectDay);
         showPlanner(customer, selectDay, order);
     }
 
-    private void showPlanner(Customer customer, CalendarDay calendarDay, Order order) {
+    private void showPlanner(Plan customer, CalendarDay calendarDay, Order order) {
         outputView.printEventPreview(calendarDay.getDay());
         outputView.printOrderMenu(orderService.findOrderMenus(order));
         outputView.printBeforeDiscountPrice(customerService.findBeforeDiscountPrice(customer));

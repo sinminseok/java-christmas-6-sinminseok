@@ -1,4 +1,4 @@
-package christmas.domain.user;
+package christmas.domain.plan;
 
 import java.util.Arrays;
 import java.util.function.Function;
