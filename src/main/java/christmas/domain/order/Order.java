@@ -29,12 +29,12 @@ public class Order {
     }
 
     private void validateMenuSize(List<OrderMenu> orderMenus) {
-        if(orderMenus.size() < MIN_MENU_RANGE || orderMenus.size() > MAX_MENU_RANGE){
+        if (orderMenus.size() < MIN_MENU_RANGE || orderMenus.size() > MAX_MENU_RANGE) {
             throw new ErrorMessage(ORDER_ERROR);
         }
     }
 
-    private void validateMenuAllDrinking(List<OrderMenu> orderMenus){
+    private void validateMenuAllDrinking(List<OrderMenu> orderMenus) {
         if (orderMenus.stream().allMatch(orderMenu -> orderMenu.compareMenuType(MenuType.DRINKING))) {
             throw new ErrorMessage(ORDER_ERROR);
         }

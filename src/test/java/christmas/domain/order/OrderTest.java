@@ -3,7 +3,6 @@ package christmas.domain.order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -14,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OrderTest {
     private static final Menu menu1 = Menu.of("메뉴1", 5000, MenuType.MAIN);
@@ -28,7 +28,7 @@ public class OrderTest {
                 .mapToObj(i -> menu2)
                 .collect(Collectors.toList());
         //when
-        Assertions.assertThatThrownBy(() -> new Order(collect))
+        assertThatThrownBy(() -> new Order(collect))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,7 +38,7 @@ public class OrderTest {
         OrderMenu drinking = new OrderMenu(Menu.of("음료", 5000, MenuType.DRINKING), 1);
         List<OrderMenu> orderMenus = List.of(drinking);
         //when, then
-        Assertions.assertThatThrownBy(() -> new Order(orderMenus))
+        assertThatThrownBy(() -> new Order(orderMenus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -47,7 +47,7 @@ public class OrderTest {
         //given
         OrderMenu drinking = new OrderMenu(Menu.of("메뉴", 5000, MenuType.MAIN), 1);
         List<OrderMenu> orderMenus = List.of(drinking, drinking, drinking);
-        Assertions.assertThatThrownBy(() -> new Order(orderMenus))
+        assertThatThrownBy(() -> new Order(orderMenus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

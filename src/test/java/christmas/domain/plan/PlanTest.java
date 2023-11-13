@@ -3,13 +3,13 @@ package christmas.domain.plan;
 
 import christmas.domain.event.Reward;
 import christmas.domain.event.RewardMenu;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static christmas.data.DummyData.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlanTest {
 
@@ -25,7 +25,7 @@ public class PlanTest {
         //when
         Integer beforeDiscountPrice = plan.findBeforeDiscountPrice();
         //then
-        Assertions.assertThat(beforeDiscountPrice).isEqualTo(300000);
+        assertThat(beforeDiscountPrice).isEqualTo(300000);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class PlanTest {
         //when
         List<Reward> allReward = plan.findAllReward();
         //then
-        Assertions.assertThat(allReward.size()).isEqualTo(5);
+        assertThat(allReward.size()).isEqualTo(5);
     }
 
     @Test
@@ -41,14 +41,14 @@ public class PlanTest {
         //when
         List<RewardMenu> menuRewards = plan.findMenuRewards();
         //then
-        Assertions.assertThat(menuRewards.size()).isEqualTo(1);
+        assertThat(menuRewards.size()).isEqualTo(1);
     }
 
     @Test
-    void calculateTotalRewardPrice_메서드는_적용된_총_혜택_금액을_계산한다(){
+    void calculateTotalRewardPrice_메서드는_적용된_총_혜택_금액을_계산한다() {
         //when
         Integer rewardPrice = plan.calculateTotalRewardPrice();
         //then
-        Assertions.assertThat(rewardPrice).isEqualTo(41538);
+        assertThat(rewardPrice).isEqualTo(41538);
     }
 }

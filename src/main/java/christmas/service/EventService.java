@@ -16,7 +16,7 @@ public class EventService {
     }
 
     public Events findApplicableEvents(Order order, CalendarDay day) {
-        if(order.canApplyEvent()){
+        if (order.canApplyEvent()) {
             EventConditionContext eventApplyParameter = new EventConditionContext(order.getOrderPrice(), day);
             return new Events(eventRepository.findCanApplyEvents(eventApplyParameter));
         }

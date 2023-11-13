@@ -1,13 +1,12 @@
 package christmas.domain.event;
 
-import christmas.domain.menu.OrderMenu;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static christmas.data.DummyData.provideEventRewardContextData;
 import static christmas.data.DummyData.provideEventsData;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EventsTest {
 
@@ -19,7 +18,7 @@ public class EventsTest {
         //when
         List<Reward> rewards = events.findRewards(rewardStandard);
         //then
-        Assertions.assertThat(rewards.size()).isEqualTo(5);
+        assertThat(rewards.size()).isEqualTo(5);
     }
 
     @Test
@@ -30,6 +29,6 @@ public class EventsTest {
         //when
         List<RewardMenu> giftRewards = events.findRewardMenus(rewardStandard);
         //then
-        Assertions.assertThat(giftRewards.size()).isEqualTo(1);
+        assertThat(giftRewards.size()).isEqualTo(1);
     }
 }

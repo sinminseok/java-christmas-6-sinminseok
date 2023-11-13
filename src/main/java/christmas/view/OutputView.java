@@ -69,7 +69,7 @@ public class OutputView {
 
     public static void printTotalDiscountPrice(int price) {
         System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE);
-        if(price == ZERO){
+        if (price == ZERO) {
             System.out.println(price + PRICE_UNIT);
             return;
         }

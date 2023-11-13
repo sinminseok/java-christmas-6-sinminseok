@@ -2,7 +2,6 @@ package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.EventCondition;
-import christmas.domain.menu.OrderMenu;
 
 import java.time.LocalDate;
 

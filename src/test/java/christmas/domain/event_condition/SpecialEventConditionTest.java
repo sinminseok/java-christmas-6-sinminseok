@@ -17,7 +17,7 @@ public class SpecialEventConditionTest {
     private SpecialEventCondition specialEventCondition;
 
     @BeforeEach
-    void setInit(){
+    void setInit() {
         specialEventCondition = new SpecialEventCondition();
     }
 

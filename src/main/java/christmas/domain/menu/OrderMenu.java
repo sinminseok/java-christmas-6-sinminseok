@@ -1,6 +1,6 @@
 package christmas.domain.menu;
 
-public class OrderMenu extends MenuBase{
+public class OrderMenu extends MenuBase {
 
     public OrderMenu(Menu menu, Integer count) {
         super(menu, count);

@@ -3,7 +3,6 @@ package christmas.domain.event;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.*;
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,10 @@
 package christmas.domain.menu;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MenuTest {
 
@@ -21,7 +21,7 @@ public class MenuTest {
         //when
         boolean sameName = menu.isSameName(name);
         //then
-        Assertions.assertThat(sameName).isEqualTo(result);
+        assertThat(sameName).isEqualTo(result);
     }
 
     @ParameterizedTest
@@ -30,6 +30,6 @@ public class MenuTest {
         //when
         boolean sameMenuType = menu.isSameMenuType(menuType);
         //then
-        Assertions.assertThat(sameMenuType).isEqualTo(result);
+        assertThat(sameMenuType).isEqualTo(result);
     }
 }

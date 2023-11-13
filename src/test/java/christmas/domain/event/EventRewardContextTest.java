@@ -1,7 +1,6 @@
 package christmas.domain.event;
 
 import christmas.domain.menu.MenuType;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,6 +9,7 @@ import java.time.LocalDate;
 
 import static christmas.data.DummyData.provideCalendarDay;
 import static christmas.data.DummyData.provideOrderData;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EventRewardContextTest {
 
@@ -21,7 +21,7 @@ public class EventRewardContextTest {
         //when
         int count = eventRewardContext.countMenuByType(menuType);
         //then
-        Assertions.assertThat(count).isEqualTo(result);
+        assertThat(count).isEqualTo(result);
     }
 
     @Test
@@ -34,6 +34,6 @@ public class EventRewardContextTest {
         int daysSinceStart = eventRewardContext.calculateDaysSinceStart(startDate);
         // then
 
-        Assertions.assertThat(daysSinceStart).isEqualTo(5); // Adjust the expected value based on the actual date difference
+        assertThat(daysSinceStart).isEqualTo(5); // Adjust the expected value based on the actual date difference
     }
 }

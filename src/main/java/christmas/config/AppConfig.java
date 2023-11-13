@@ -34,10 +34,6 @@ public class AppConfig {
         return new EventService(eventRepository);
     }
 
-    public static MenuService getMenuService() {
-        return new MenuService(menuRepository);
-    }
-
     public static PlanService getPlanService() {
         return new PlanService();
     }

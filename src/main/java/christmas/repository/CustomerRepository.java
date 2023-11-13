@@ -8,7 +8,7 @@ import java.util.List;
 public class CustomerRepository {
     private static final List<Customer> customers = new ArrayList<>();
 
-    public static void save(Customer customer){
+    public static void save(Customer customer) {
         customers.add(customer);
     }
 }

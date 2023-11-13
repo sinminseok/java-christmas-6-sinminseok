@@ -24,14 +24,14 @@ public class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"타파스-1-시저샐러드-1", "타파스-한글", "0-1"})
-    void validateOrderFormat_메서드는_메뉴_형식이_다른_경우_예외를_발생한다(String input){
+    void validateOrderFormat_메서드는_메뉴_형식이_다른_경우_예외를_발생한다(String input) {
         assertThatThrownBy(() -> InputValidator.validateOrder(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"타파스-0", "타파스-0, 샐러드-1"})
-    void validateOrderFormat_메서드는_메뉴_갯수가_1이상의_숫자가_아닌경우_예외를_발생한다(String input){
+    void validateOrderFormat_메서드는_메뉴_갯수가_1이상의_숫자가_아닌경우_예외를_발생한다(String input) {
         assertThatThrownBy(() -> InputValidator.validateOrder(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }

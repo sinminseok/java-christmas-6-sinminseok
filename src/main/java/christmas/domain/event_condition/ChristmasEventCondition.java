@@ -10,8 +10,8 @@ import java.time.LocalDate;
 public class ChristmasEventCondition implements EventCondition {
     private static final Integer START_DISCOUNT_PRICE = 1000;
     private static final Integer INCREASE_DISCOUNT_PRICE_PER_DAY = 100;
-    private static final LocalDate START_DATE = LocalDate.of(2023,12,1);
-    private static final LocalDate END_DATE = LocalDate.of(2023,12,25);
+    private static final LocalDate START_DATE = LocalDate.of(2023, 12, 1);
+    private static final LocalDate END_DATE = LocalDate.of(2023, 12, 25);
 
     @Override
     public boolean canApplyEvent(EventConditionContext eventApplyParameter) {

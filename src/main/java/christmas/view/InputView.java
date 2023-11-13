@@ -22,7 +22,7 @@ public class InputView {
         return parseInteger(input);
     }
 
-    public static OrderDto readOrder(){
+    public static OrderDto readOrder() {
         System.out.println(INPUT_ORDER_INFORMATION_MESSAGE);
         String input = Console.readLine();
         validateOrder(input);
