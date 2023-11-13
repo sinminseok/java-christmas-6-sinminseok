@@ -26,7 +26,7 @@ public class MenuRepository {
         menus.add(Menu.of("아이스크림", 5000, MenuType.DESERT));
 
         menus.add(Menu.of("제로콜라", 3000, MenuType.DRINKING));
-        menus.add(Menu.of("레드와인", 6000, MenuType.DRINKING));
+        menus.add(Menu.of("레드와인", 60000, MenuType.DRINKING));
         menus.add(Menu.of("샴페인", 25000, MenuType.DRINKING));
     }
 
