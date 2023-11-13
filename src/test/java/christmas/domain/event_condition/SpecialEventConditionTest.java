@@ -35,8 +35,6 @@ public class SpecialEventConditionTest {
 
     @Test
     void 특별_할인_이벤트_보상은_총_금액에_적용될_1000원_할인이다() {
-        //given
-        CalendarDay day = new CalendarDay(LocalDate.of(2023, 12, 23), false);
         //when
         EventReward eventReward = specialEventCondition.giveReward(null);
         //then
