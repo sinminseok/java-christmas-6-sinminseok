@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
 
-import static christmas.data.DummyData.provideOrderData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ChristmasEventConditionTest {
@@ -38,7 +37,8 @@ public class ChristmasEventConditionTest {
     void 크리스마스_디데이_이벤트_보상이_올바르게_반환되는지_확인한다(int selectDay, int result) {
         //given
         CalendarDay calendarDay = new CalendarDay(LocalDate.of(2023, 12, selectDay), false);
-        EventRewardContext rewardStandard = new EventRewardContext(provideOrderData(), calendarDay);
+        // 크리스마스 디데이 이벤트 보상은 주문정보 관련 없다
+        EventRewardContext rewardStandard = new EventRewardContext(null, calendarDay);
         //when
         EventReward eventReward = christmasEventCondition.giveReward(rewardStandard);
         //then
