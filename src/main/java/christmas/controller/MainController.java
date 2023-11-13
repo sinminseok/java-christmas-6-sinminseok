@@ -38,6 +38,19 @@ public class MainController {
         Events events = findApplicableEvents(order, selectDay);
         Plan plan = planService.createPlanner(events, order, selectDay);
         showPlan(plan, selectDay, order);
+        saveCustomer(plan);
+    }
+
+    private Order registerOrder() {
+        return orderService.createOrder(inputView.readOrder());
+    }
+
+    private CalendarDay registerVisitDay() {
+        return calendarService.findByDay(inputView.readVisitDay());
+    }
+
+    private Events findApplicableEvents(Order order, CalendarDay calendarDay) {
+        return eventService.findApplicableEvents(order, calendarDay);
     }
 
     private void showPlan(Plan plan, CalendarDay calendarDay, Order order) {
@@ -51,17 +64,8 @@ public class MainController {
         outputView.printBadge(planService.findBadge(plan));
     }
 
-
-    private Order registerOrder() {
-        return orderService.createOrder(inputView.readOrder());
-    }
-
-    private CalendarDay registerVisitDay() {
-        return calendarService.findByDay(inputView.readVisitDay());
-    }
-
-    private Events findApplicableEvents(Order order, CalendarDay calendarDay) {
-        return eventService.findApplicableEvents(order, calendarDay);
+    private void saveCustomer(Plan plan) {
+        customerService.saveCustomer(plan);
     }
 
 }
