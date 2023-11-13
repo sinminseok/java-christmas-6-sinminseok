@@ -1,42 +1,17 @@
 package christmas.domain.menu;
 
-import java.util.Objects;
-
-public class OrderMenu {
-    private final Menu menu;
-    private final Integer count;
+public class OrderMenu extends MenuBase{
 
     public OrderMenu(Menu menu, Integer count) {
-        this.menu = menu;
-        this.count = count;
+        super(menu, count);
     }
 
     public boolean compareMenuType(MenuType menuType) {
         return menu.isSameMenuType(menuType);
     }
 
+    @Override
     public Integer calculatePrice() {
         return menu.getPrice() * count;
-    }
-
-    public String getMenuName() {
-        return menu.getName();
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OrderMenu menuItem = (OrderMenu) o;
-        return Objects.equals(menu, menuItem.menu) && Objects.equals(count, menuItem.count);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(menu, count);
     }
 }
