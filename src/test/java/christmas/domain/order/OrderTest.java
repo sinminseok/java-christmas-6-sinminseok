@@ -36,8 +36,17 @@ public class OrderTest {
     void 주문생성시_주문메뉴가_모두_음료수인_경우_예외를_발생한다() {
         //given
         OrderMenu drinking = new OrderMenu(Menu.of("음료", 5000, MenuType.DRINKING), 1);
-        List<OrderMenu> orderMenus = List.of(drinking, drinking, drinking);
+        List<OrderMenu> orderMenus = List.of(drinking);
         //when, then
+        Assertions.assertThatThrownBy(() -> new Order(orderMenus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 주문생성시_주문메뉴_이름이_중복되는_경우_예외를_발생한다() {
+        //given
+        OrderMenu drinking = new OrderMenu(Menu.of("메뉴", 5000, MenuType.MAIN), 1);
+        List<OrderMenu> orderMenus = List.of(drinking, drinking, drinking);
         Assertions.assertThatThrownBy(() -> new Order(orderMenus))
                 .isInstanceOf(IllegalArgumentException.class);
     }

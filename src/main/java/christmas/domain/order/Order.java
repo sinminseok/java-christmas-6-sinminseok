@@ -17,8 +17,15 @@ public class Order {
 
     public Order(List<OrderMenu> orderMenus) {
         validateMenuSize(orderMenus);
+        validateDuplicateMenu(orderMenus);
         validateMenuAllDrinking(orderMenus);
         this.orderMenus = orderMenus;
+    }
+
+    private void validateDuplicateMenu(List<OrderMenu> orderMenus) {
+        if (orderMenus.stream().map(OrderMenu::getMenuName).distinct().count() != orderMenus.size()) {
+            throw new ErrorMessage(ORDER_ERROR);
+        }
     }
 
     private void validateMenuSize(List<OrderMenu> orderMenus) {
