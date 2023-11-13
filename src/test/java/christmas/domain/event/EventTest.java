@@ -80,7 +80,7 @@ public class EventTest {
         return new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, day), false));
     }
 
-    private class TestDiscountEventCondition implements EventCondition {
+    public static class TestDiscountEventCondition implements EventCondition {
 
         @Override
         public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
@@ -99,7 +99,7 @@ public class EventTest {
     }
 
 
-    private class TestGiftEventCondition implements EventCondition {
+    public static class TestGiftEventCondition implements EventCondition {
 
         @Override
         public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
