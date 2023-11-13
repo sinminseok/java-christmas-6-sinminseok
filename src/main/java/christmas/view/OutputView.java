@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.domain.user.Badge;
 import christmas.dto.MenuItemDto;
 import christmas.dto.RewardDto;
 
@@ -19,6 +20,7 @@ public class OutputView {
     private static final String REWARD_MESSAGE = NEXT_LINE + "<혜택 내역>";
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<총혜택 금액>";
     private static final String AFTER_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<할인 후 예상 결제 금액>";
+    private static final String BADGE_MESSAGE = NEXT_LINE + "<12월 이벤트 배지>";
     private static final String MENU_INFORMATION = "{0} {1}개";
     private static final String REWARD_INFORMATION = "{0}: -{1}원";
     private static final String PRICE_UNIT = "원";
@@ -77,6 +79,11 @@ public class OutputView {
     public static void printAfterDiscountPrice(int price) {
         System.out.println(AFTER_DISCOUNT_PRICE_MESSAGE);
         System.out.println(formatPrice(price) + PRICE_UNIT);
+    }
+
+    public static void printBadge(Badge badge) {
+        System.out.println(BADGE_MESSAGE);
+        System.out.println(badge.getName());
     }
 
     private static String formatPrice(int price) {
