@@ -3,11 +3,15 @@ package christmas.domain.order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +19,28 @@ public class OrderTest {
     private static final Menu menu1 = Menu.of("메뉴1", 5000, MenuType.MAIN);
     private static final OrderMenu menu2 = new OrderMenu(Menu.of("메뉴2", 5000, MenuType.MAIN), 2);
     private static final OrderMenu menu3 = new OrderMenu(Menu.of("메뉴3", 5000, MenuType.MAIN), 3);
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 21})
+    void 주문생성시_주문메뉴_갯수가_1부터_20_사이가_아닌경우_예외를_발생한다(int size) {
+        //given
+        List<OrderMenu> collect = IntStream.range(0, size)
+                .mapToObj(i -> menu2)
+                .collect(Collectors.toList());
+        //when
+        Assertions.assertThatThrownBy(() -> new Order(collect))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 주문생성시_주문메뉴가_모두_음료수인_경우_예외를_발생한다() {
+        //given
+        OrderMenu drinking = new OrderMenu(Menu.of("음료", 5000, MenuType.DRINKING), 1);
+        List<OrderMenu> orderMenus = List.of(drinking, drinking, drinking);
+        //when, then
+        Assertions.assertThatThrownBy(() -> new Order(orderMenus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void getOrderPrice_메서드는_총_주문금액을_구한다() {

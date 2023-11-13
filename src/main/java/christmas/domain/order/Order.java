@@ -28,7 +28,7 @@ public class Order {
     }
 
     private void validateMenuAllDrinking(List<OrderMenu> orderMenus){
-        if (!orderMenus.stream().allMatch(orderMenu -> orderMenu.compareMenuType(MenuType.DRINKING))) {
+        if (orderMenus.stream().allMatch(orderMenu -> orderMenu.compareMenuType(MenuType.DRINKING))) {
             throw new ErrorMessage(ORDER_ERROR);
         }
     }
