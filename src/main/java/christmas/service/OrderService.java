@@ -2,9 +2,11 @@ package christmas.service;
 
 import christmas.domain.menu.OrderMenu;
 import christmas.domain.order.Order;
+import christmas.dto.MenuItemDto;
 import christmas.dto.OrderDto;
 import christmas.repository.MenuRepository;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderService {
@@ -23,4 +25,9 @@ public class OrderService {
                 .collect(Collectors.toList()));
     }
 
+    public List<MenuItemDto> findOrderMenus(Order order) {
+        return order.getMenuItems().stream()
+                .map(orderMenu -> new MenuItemDto(orderMenu.getMenuName(), orderMenu.getCount()))
+                .collect(Collectors.toList());
+    }
 }
