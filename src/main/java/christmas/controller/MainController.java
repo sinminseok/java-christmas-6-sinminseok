@@ -15,12 +15,12 @@ public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    private final CustomerService customerService;
+    private final PlanService customerService;
     private final OrderService orderService;
     private final CalendarService calendarService;
     private final EventService eventService;
 
-    public MainController(CustomerService customerService, OrderService orderService, CalendarService calendarService, EventService eventService) {
+    public MainController(PlanService customerService, OrderService orderService, CalendarService calendarService, EventService eventService) {
         this.inputView = getInputView();
         this.outputView = getOutputView();
         this.customerService = customerService;

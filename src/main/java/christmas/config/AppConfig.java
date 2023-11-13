@@ -36,8 +36,8 @@ public class AppConfig {
         return new MenuService(menuRepository);
     }
 
-    public static CustomerService getCustomerService() {
-        return new CustomerService();
+    public static PlanService getCustomerService() {
+        return new PlanService();
     }
 
     public static OrderService getOrderService() {

@@ -13,7 +13,7 @@ import christmas.dto.RewardDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomerService {
+public class PlanService {
 
     public Plan createPlanner(Events events, Order order, CalendarDay calendarDay) {
         return new Plan(events, order, calendarDay);
