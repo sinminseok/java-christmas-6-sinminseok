@@ -3,8 +3,8 @@ package christmas.domain.event_condition;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
+import christmas.domain.event.RewardMenu;
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,10 +40,10 @@ public class GiftEventConditionTest {
     void 증정_이벤트_보상은_샴페인_1병이다() {
         //given
         Menu champagne = Menu.of("샴페인", 25000, MenuType.DRINKING);
-        OrderMenu reward = new OrderMenu(champagne, 1);
+        RewardMenu resultReward = new RewardMenu(champagne, 1);
         //when
         EventReward eventReward = giftEventCondition.giveReward(null);
         //then
-        Assertions.assertThat(eventReward.getRewardValue()).isEqualTo(reward);
+        Assertions.assertThat(eventReward.getRewardValue()).isEqualTo(resultReward);
     }
 }
