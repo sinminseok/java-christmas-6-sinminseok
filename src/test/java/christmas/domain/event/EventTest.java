@@ -2,6 +2,9 @@ package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.*;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,6 +41,17 @@ public class EventTest {
         Reward reward = event.findReward(provideEventRewardContextData());
         //then
         Assertions.assertThat(reward).isEqualTo(resultReward);
+    }
+
+    @Test
+    void wrapMenuItemReward_메서드는_이벤트_보상을_MenuItem_타입으로_반환한다() {
+        //given
+        Event event = Event.of("증정 이벤트", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new GiftEventCondition());
+        MenuItem rewardMenu = new MenuItem(Menu.of("샴페인", 25000, MenuType.DRINKING), 1);
+        //when
+        MenuItem menuItem = event.wrapMenuItemReward(null);
+        //then
+        Assertions.assertThat(menuItem).isEqualTo(rewardMenu);
     }
 
     static List<Arguments> provideEventData() {
