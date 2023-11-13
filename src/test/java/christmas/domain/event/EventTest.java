@@ -2,6 +2,8 @@ package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import static christmas.data.DummyData.provideEventRewardContextData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EventTest {
@@ -24,6 +27,17 @@ public class EventTest {
         boolean canApplyEvent = event.isApplicable(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
+    }
+
+    @Test
+    void findReward_메서드는_이벤트의_혜택을_찾는다() {
+        //given
+        Event event = Event.of("크리스마스 디데이 할인", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new ChristmasEventCondition());
+        Reward resultReward = new Reward("크리스마스 디데이 할인", 3400);
+        //when
+        Reward reward = event.findReward(provideEventRewardContextData());
+        //then
+        Assertions.assertThat(reward).isEqualTo(resultReward);
     }
 
     static List<Arguments> provideEventData() {
