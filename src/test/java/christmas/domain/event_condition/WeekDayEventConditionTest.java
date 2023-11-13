@@ -4,14 +4,18 @@ import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardContext;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
+import christmas.domain.menu.OrderMenu;
+import christmas.domain.order.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import static christmas.data.DummyData.provideEventRewardParameterData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WeekDayEventConditionTest {
@@ -27,9 +31,9 @@ public class WeekDayEventConditionTest {
     @ValueSource(ints = {3, 4, 5, 6, 7})
     void 평일_할인_이벤트_참여_가능_여부를_확인한다(int selectDay) {
         //given
-        EventConditionContext eventApplyParameter = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
+        EventConditionContext context = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
         //when
-        boolean canApplyEvent = weekDayEventCondition.canApplyEvent(eventApplyParameter);
+        boolean canApplyEvent = weekDayEventCondition.canApplyEvent(context);
         //then
         assertThat(canApplyEvent).isTrue();
     }
@@ -37,11 +41,20 @@ public class WeekDayEventConditionTest {
     @Test
     void 평일_할인_이벤트_보상은_디저트메뉴_갯수1개당_2023원_할인이다() {
         //given
-        // provideEventRewardParameterData 는 3개의 디저트 메뉴를 제공한다.
-        EventRewardContext eventRewardParameter = provideEventRewardParameterData();
+        EventRewardContext context = new EventRewardContext(provideOrder(), null);
         //when
-        EventReward eventReward = weekDayEventCondition.giveReward(eventRewardParameter);
+        EventReward eventReward = weekDayEventCondition.giveReward(context);
         //then
         assertThat(eventReward.getRewardValue()).isEqualTo(6069);
     }
+
+    //디저트 메뉴 3개 제공
+    private Order provideOrder() {
+        OrderMenu orderMenu1 = new OrderMenu(Menu.of("디저트메뉴1",10000, MenuType.DESERT),1);
+        OrderMenu orderMenu2 = new OrderMenu(Menu.of("디저트메뉴2",10000, MenuType.DESERT),1);
+        OrderMenu orderMenu3 = new OrderMenu(Menu.of("디저트메뉴3",10000, MenuType.DESERT),1);
+        return new Order(List.of(orderMenu1, orderMenu2, orderMenu3));
+    }
+
+
 }
