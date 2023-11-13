@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static christmas.utils.Parser.*;
+import static christmas.view.InputValidator.validateVisitDay;
 
 public class InputView {
     private static final String INPUT_VISIT_DAY_MESSAGE = "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
@@ -16,7 +17,7 @@ public class InputView {
     public static Integer readVisitDay() {
         System.out.println(INPUT_VISIT_DAY_MESSAGE);
         String input = Console.readLine();
-        //todo 검증 로직 추가
+        validateVisitDay(input);
         return parseInteger(input);
     }
 
