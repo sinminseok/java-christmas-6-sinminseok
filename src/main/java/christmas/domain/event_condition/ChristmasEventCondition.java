@@ -3,6 +3,7 @@ package christmas.domain.event_condition;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardContext;
+import christmas.domain.event.EventType;
 
 import java.time.LocalDate;
 
@@ -22,5 +23,10 @@ public class ChristmasEventCondition implements EventCondition {
         int daysFromStart = rewardParameter.calculateDaysSinceStart(START_DATE);
         int discountAmount = START_DISCOUNT_PRICE + (daysFromStart * INCREASE_DISCOUNT_PRICE_PER_DAY);
         return new EventReward(discountAmount);
+    }
+
+    @Override
+    public EventType checkEventType() {
+        return EventType.DISCOUNT;
     }
 }

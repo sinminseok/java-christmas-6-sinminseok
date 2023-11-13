@@ -3,6 +3,7 @@ package christmas.domain.event_condition;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardContext;
+import christmas.domain.event.EventType;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuType;
@@ -20,5 +21,10 @@ public class GiftEventCondition implements EventCondition {
     @Override
     public EventReward giveReward(EventRewardContext eventRewardParameter) {
         return new EventReward(GIFT_EVENT_REWARD);
+    }
+
+    @Override
+    public EventType checkEventType() {
+        return EventType.GIFT;
     }
 }
