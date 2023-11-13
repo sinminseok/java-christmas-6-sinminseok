@@ -14,8 +14,11 @@ public class OutputView {
     private static final String EVENT_PREVIEW_MESSAGE = "12월 {0}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_MESSAGE = NEXT_LINE + "<주문 메뉴>";
     private static final String BEFORE_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<할인 전 총주문 금액>";
+    private static final String GIFT_REWARD_MESSAGE = NEXT_LINE + "<증정 메뉴>";
     private static final String MENU_INFORMATION = "{0} {1}개";
     private static final String PRICE_UNIT = "원";
+    private static final String NONE = "없음";
+    private static final Integer ZERO = 0;
 
     public static void printStartMessage() {
         System.out.println(START_PLANNER_MESSAGE);
@@ -34,6 +37,16 @@ public class OutputView {
     public static void printBeforeDiscountPrice(Integer price) {
         System.out.println(BEFORE_DISCOUNT_PRICE_MESSAGE);
         System.out.println(formatPrice(price) + PRICE_UNIT);
+    }
+
+    public static void printGiftReward(List<MenuItemDto> rewards) {
+        System.out.println(GIFT_REWARD_MESSAGE);
+        if (rewards.size() == ZERO) {
+            System.out.println(NONE);
+            return;
+        }
+        rewards.stream()
+                .forEach(menuDto -> System.out.println(formatMenu(menuDto)));
     }
 
     private static String formatPrice(int price) {
