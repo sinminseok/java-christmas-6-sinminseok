@@ -32,7 +32,7 @@ public class Event {
     }
 
     private Reward wrapReward(EventReward eventReward) {
-        if (eventReward.isMenuItemType()) {
+        if (eventReward.isRewardMenuType()) {
             return new Reward(name, ((OrderMenu) eventReward.getRewardValue()).calculatePrice());
         }
         return new Reward(name, (Integer) eventReward.getRewardValue());
