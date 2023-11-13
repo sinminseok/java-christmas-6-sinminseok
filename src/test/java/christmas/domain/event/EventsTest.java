@@ -1,6 +1,6 @@
 package christmas.domain.event;
 
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +28,7 @@ public class EventsTest {
         Events events = provideEventsData();
         EventRewardContext rewardStandard = provideEventRewardContextData();
         //when
-        List<MenuItem> giftRewards = events.findMenuRewards(rewardStandard);
+        List<OrderMenu> giftRewards = events.findMenuRewards(rewardStandard);
         //then
         Assertions.assertThat(giftRewards.size()).isEqualTo(1);
     }

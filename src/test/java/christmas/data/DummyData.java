@@ -6,7 +6,7 @@ import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.Events;
 import christmas.domain.event_condition.*;
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import christmas.domain.order.Order;
 
@@ -37,9 +37,9 @@ public class DummyData {
         Menu menu2 = Menu.of("메뉴2", 50000, MenuType.MAIN);
         Menu menu3 = Menu.of("메뉴3", 50000, MenuType.DESERT);
 
-        MenuItem menuItem = new MenuItem(menu1, 1);
-        MenuItem menuItem2 = new MenuItem(menu2, 2);
-        MenuItem menuItem3 = new MenuItem(menu3, 3);
+        OrderMenu menuItem = new OrderMenu(menu1, 1);
+        OrderMenu menuItem2 = new OrderMenu(menu2, 2);
+        OrderMenu menuItem3 = new OrderMenu(menu3, 3);
         return new Order(List.of(menuItem, menuItem2, menuItem3));
     }
 

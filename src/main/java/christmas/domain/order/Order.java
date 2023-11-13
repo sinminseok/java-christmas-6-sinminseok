@@ -1,21 +1,21 @@
 package christmas.domain.order;
 
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 
 import java.util.List;
 
 public class Order {
     private static final Integer MIN_TOTAL_PRICE = 10000;
 
-    private final List<MenuItem> menuItems;
+    private final List<OrderMenu> menuItems;
 
-    public Order(List<MenuItem> menuItems) {
+    public Order(List<OrderMenu> menuItems) {
         this.menuItems = menuItems;
     }
 
     public Integer getOrderPrice() {
         return menuItems.stream()
-                .mapToInt(MenuItem::calculatePrice)
+                .mapToInt(OrderMenu::calculatePrice)
                 .sum();
     }
 
@@ -23,7 +23,7 @@ public class Order {
         return getOrderPrice() >= MIN_TOTAL_PRICE;
     }
 
-    public List<MenuItem> getMenuItems() {
+    public List<OrderMenu> getMenuItems() {
         return menuItems;
     }
 }

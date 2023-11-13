@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MenuItemTest {
 
-    private MenuItem menuItem;
+    private OrderMenu menuItem;
 
     @BeforeEach
     void setInit() {
-        menuItem = new MenuItem(Menu.of("메인", 10000, MenuType.MAIN), 1);
+        menuItem = new OrderMenu(Menu.of("메인", 10000, MenuType.MAIN), 1);
     }
 
 

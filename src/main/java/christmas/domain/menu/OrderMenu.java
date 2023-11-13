@@ -2,11 +2,11 @@ package christmas.domain.menu;
 
 import java.util.Objects;
 
-public class MenuItem {
+public class OrderMenu {
     private final Menu menu;
     private final Integer count;
 
-    public MenuItem(Menu menu, Integer count) {
+    public OrderMenu(Menu menu, Integer count) {
         this.menu = menu;
         this.count = count;
     }
@@ -27,7 +27,7 @@ public class MenuItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MenuItem menuItem = (MenuItem) o;
+        OrderMenu menuItem = (OrderMenu) o;
         return Objects.equals(menu, menuItem.menu) && Objects.equals(count, menuItem.count);
     }
 

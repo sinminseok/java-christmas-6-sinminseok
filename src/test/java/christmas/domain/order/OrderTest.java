@@ -1,7 +1,7 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,8 +13,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderTest {
     private static final Menu menu1 = Menu.of("메뉴1", 5000, MenuType.MAIN);
-    private static final MenuItem menu2 = new MenuItem(Menu.of("메뉴2", 5000, MenuType.MAIN), 2);
-    private static final MenuItem menu3 = new MenuItem(Menu.of("메뉴3", 5000, MenuType.MAIN), 3);
+    private static final OrderMenu menu2 = new OrderMenu(Menu.of("메뉴2", 5000, MenuType.MAIN), 2);
+    private static final OrderMenu menu3 = new OrderMenu(Menu.of("메뉴3", 5000, MenuType.MAIN), 3);
 
     @Test
     void getOrderPrice_메서드는_총_주문금액을_구한다() {
@@ -30,7 +30,7 @@ public class OrderTest {
     @CsvSource(value = {"1, false", "2, true"})
     void canApplyEvent_메서드는_이벤트_적용이_가능한지_판별한다(int menuCount, boolean result) {
         //given
-        Order order = new Order(List.of(new MenuItem(menu1, menuCount)));
+        Order order = new Order(List.of(new OrderMenu(menu1, menuCount)));
         //when
         boolean canApplyEvent = order.canApplyEvent();
         //then

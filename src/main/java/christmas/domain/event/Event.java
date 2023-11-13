@@ -2,7 +2,7 @@ package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.EventCondition;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 
 import java.time.LocalDate;
 
@@ -26,15 +26,15 @@ public class Event {
         return wrapReward(eventReward);
     }
 
-    public MenuItem wrapMenuItemReward(EventRewardContext context) {
+    public OrderMenu wrapMenuItemReward(EventRewardContext context) {
         EventReward eventReward = condition.giveReward(context);
-        return (MenuItem) eventReward.getRewardValue();
+        return (OrderMenu) eventReward.getRewardValue();
     }
 
     // 제네릭 타입은 EventReward 를 Reward 로 변경
     private Reward wrapReward(EventReward eventReward) {
         if (eventReward.isMenuItemType()) {
-            return new Reward(name, ((MenuItem) eventReward.getRewardValue()).calculatePrice());
+            return new Reward(name, ((OrderMenu) eventReward.getRewardValue()).calculatePrice());
         }
         return new Reward(name, (Integer) eventReward.getRewardValue());
     }

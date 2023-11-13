@@ -1,7 +1,7 @@
 package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import christmas.domain.order.Order;
 
@@ -19,7 +19,7 @@ public class EventRewardContext {
     public int countMenuByType(MenuType menuType) {
         return order.getMenuItems().stream()
                 .filter(menuItem -> menuItem.compareMenuType(menuType))
-                .mapToInt(MenuItem::getCount)
+                .mapToInt(OrderMenu::getCount)
                 .sum();
     }
 

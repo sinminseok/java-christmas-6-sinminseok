@@ -2,7 +2,7 @@ package christmas.domain.user;
 
 
 import christmas.domain.event.Reward;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ public class CustomerTest {
     @Test
     void findMenuRewards_메서드는_적용된_이벤트들_중_증정_메뉴를_찾는다() {
         //when
-        List<MenuItem> menuRewards = customer.findMenuRewards();
+        List<OrderMenu> menuRewards = customer.findMenuRewards();
         //then
         Assertions.assertThat(menuRewards.size()).isEqualTo(1);
     }

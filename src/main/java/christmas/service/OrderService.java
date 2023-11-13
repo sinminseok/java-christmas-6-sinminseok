@@ -1,7 +1,6 @@
 package christmas.service;
 
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.OrderMenu;
 import christmas.domain.order.Order;
 import christmas.dto.OrderDto;
 import christmas.repository.MenuRepository;
@@ -17,7 +16,7 @@ public class OrderService {
 
     public Order createOrder(OrderDto orderDto) {
         return new Order(orderDto.getOrderMenuDtos().stream()
-                .map(menuItemDto -> new MenuItem(
+                .map(menuItemDto -> new OrderMenu(
                         menuRepository.findByName(menuItemDto.getMenuName()),
                         menuItemDto.getAmount()
                 ))
