@@ -42,6 +42,18 @@ public class Customer {
                 .sum();
     }
 
+    private Integer calculateDiscountRewardPrice() {
+        EventRewardContext context = createRewardContext();
+        List<Reward> discountRewards = events.findDiscountReward(context);
+        return discountRewards.stream()
+                .mapToInt(rewardDiscount -> rewardDiscount.getDiscountPrice())
+                .sum();
+    }
+
+    public Integer calculatePaymentPrice() {
+        return findBeforeDiscountPrice() - calculateDiscountRewardPrice();
+    }
+
     private EventRewardContext createRewardContext() {
         return new EventRewardContext(order, calendarDay);
     }

@@ -22,6 +22,13 @@ public class Events {
                 .filter(Event::isGiftEvent)
                 .map(event -> event.wrapRewardMenu(context))
                 .collect(Collectors.toList());
+    }
+
+    public List<Reward> findDiscountReward(EventRewardContext context) {
+        return events.stream()
+                .filter(Event::isDiscountEvent)
+                .map(event -> event.findReward(context))
+                .collect(Collectors.toList());
 
     }
 }

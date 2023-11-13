@@ -46,6 +46,10 @@ public class Event {
         return condition.checkEventType().equals(EventType.GIFT);
     }
 
+    public boolean isDiscountEvent() {
+        return condition.checkEventType().equals(EventType.DISCOUNT);
+    }
+
     private boolean containsDay(CalendarDay day) {
         return period.containPeriod(day.getDay());
     }
