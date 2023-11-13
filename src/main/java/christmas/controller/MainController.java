@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.Events;
 import christmas.domain.order.Order;
+import christmas.domain.user.Customer;
 import christmas.dto.OrderDto;
 import christmas.service.*;
 import christmas.view.InputView;
@@ -34,7 +35,9 @@ public class MainController {
         CalendarDay selectDay = registerVisitDay();
         Order order = registerOrder();
         Events events = findApplicableEvents(order, selectDay);
+        Customer customer = customerService.createPlanner(events, order, selectDay);
     }
+
 
     private Order registerOrder() {
         return orderService.createOrder(inputView.readOrder());
