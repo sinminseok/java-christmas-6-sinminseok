@@ -1,5 +1,7 @@
 package christmas.domain.event;
 
+import christmas.domain.menu.MenuItem;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,9 +12,17 @@ public class Events {
         this.events = events;
     }
 
-    public List<Reward> findRewards(EventRewardContext context){
+    public List<Reward> findRewards(EventRewardContext context) {
         return events.stream()
                 .map(event -> event.findReward(context))
                 .collect(Collectors.toList());
+    }
+
+    public List<MenuItem> findMenuRewards(EventRewardContext context) {
+        return events.stream()
+                .filter(Event::isGiftEvent)
+                .map(event -> event.wrapMenuItemReward(context))
+                .collect(Collectors.toList());
+
     }
 }

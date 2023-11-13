@@ -21,9 +21,14 @@ public class Event {
         return new Event(name, new EventPeriod(startDate, endDate), condition);
     }
 
-    public Reward findReward(EventRewardContext eventRewardContext){
+    public Reward findReward(EventRewardContext eventRewardContext) {
         EventReward eventReward = condition.giveReward(eventRewardContext);
         return wrapReward(eventReward);
+    }
+
+    public MenuItem wrapMenuItemReward(EventRewardContext context) {
+        EventReward eventReward = condition.giveReward(context);
+        return (MenuItem) eventReward.getRewardValue();
     }
 
     // 제네릭 타입은 EventReward 를 Reward 로 변경
@@ -36,6 +41,10 @@ public class Event {
 
     public boolean isApplicable(EventConditionContext context) {
         return containsDay(context.getCalendarDay()) && condition.canApplyEvent(context);
+    }
+
+    public boolean isGiftEvent() {
+        return condition.checkEventType().equals(EventType.GIFT);
     }
 
     private boolean containsDay(CalendarDay day) {
