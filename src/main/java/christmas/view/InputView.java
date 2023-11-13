@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static christmas.utils.Parser.*;
+import static christmas.view.InputValidator.validateOrder;
 import static christmas.view.InputValidator.validateVisitDay;
 
 public class InputView {
@@ -24,7 +25,7 @@ public class InputView {
     public static OrderDto readOrder(){
         System.out.println(INPUT_ORDER_INFORMATION_MESSAGE);
         String input = Console.readLine();
-        //todo 검증 로직 추가
+        validateOrder(input);
         return toInputOrderDto(input);
     }
 

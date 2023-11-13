@@ -2,8 +2,10 @@ package christmas.view;
 
 import christmas.utils.ErrorMessage;
 
+import static christmas.utils.ErrorConstants.ORDER_ERROR;
 import static christmas.utils.ErrorConstants.VISIT_DAY_ERROR;
 import static christmas.utils.Parser.parseInteger;
+import static christmas.utils.Parser.removeSpacesBetweenCommas;
 
 public class InputValidator {
     private static final Integer MIN_DAY_RANGE = 1;
@@ -22,6 +24,27 @@ public class InputValidator {
             Integer.parseInt(day);
         } catch (IllegalArgumentException exception) {
             throw new ErrorMessage(VISIT_DAY_ERROR);
+        }
+    }
+
+    public static void validateOrder(String input) {
+        String trimmedInput = removeSpacesBetweenCommas(input);
+        validateOrderFormat(trimmedInput);
+        validateMenuCount(input);
+    }
+
+    private static void validateOrderFormat(String input) {
+        if (!input.matches("^(\\p{L}+-\\d+,)*\\p{L}+-\\d+$")) {
+            throw new ErrorMessage(ORDER_ERROR);
+        }
+    }
+
+    private static void validateMenuCount(String input) {
+        for (String menuEntry : input.split(",")) {
+            int menuCount = Integer.parseInt(menuEntry.split("-")[1]);
+            if (menuCount < 1) {
+                throw new ErrorMessage(ORDER_ERROR);
+            }
         }
     }
 }
