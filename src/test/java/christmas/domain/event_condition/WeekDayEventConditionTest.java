@@ -41,20 +41,12 @@ public class WeekDayEventConditionTest {
     @Test
     void 평일_할인_이벤트_보상은_디저트메뉴_갯수1개당_2023원_할인이다() {
         //given
-        EventRewardContext context = new EventRewardContext(provideOrder(), null);
+        OrderMenu orderMenu1 = new OrderMenu(Menu.of("디저트메뉴", 10000, MenuType.DESERT), 3);
+        Order order = new Order(List.of(orderMenu1));
+        EventRewardContext context = new EventRewardContext(order, null);
         //when
         EventReward eventReward = weekDayEventCondition.giveReward(context);
         //then
         assertThat(eventReward.getRewardValue()).isEqualTo(6069);
     }
-
-    //디저트 메뉴 3개 제공
-    private Order provideOrder() {
-        OrderMenu orderMenu1 = new OrderMenu(Menu.of("디저트메뉴1",10000, MenuType.DESERT),1);
-        OrderMenu orderMenu2 = new OrderMenu(Menu.of("디저트메뉴2",10000, MenuType.DESERT),1);
-        OrderMenu orderMenu3 = new OrderMenu(Menu.of("디저트메뉴3",10000, MenuType.DESERT),1);
-        return new Order(List.of(orderMenu1, orderMenu2, orderMenu3));
-    }
-
-
 }
