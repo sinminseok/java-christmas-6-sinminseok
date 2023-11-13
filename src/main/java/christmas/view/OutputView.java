@@ -18,6 +18,7 @@ public class OutputView {
     private static final String GIFT_REWARD_MESSAGE = NEXT_LINE + "<증정 메뉴>";
     private static final String REWARD_MESSAGE = NEXT_LINE + "<혜택 내역>";
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<총혜택 금액>";
+    private static final String AFTER_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<할인 후 예상 결제 금액>";
     private static final String MENU_INFORMATION = "{0} {1}개";
     private static final String REWARD_INFORMATION = "{0}: -{1}원";
     private static final String PRICE_UNIT = "원";
@@ -71,6 +72,11 @@ public class OutputView {
             return;
         }
         System.out.println(MINUS + formatPrice(price));
+    }
+
+    public static void printAfterDiscountPrice(int price) {
+        System.out.println(AFTER_DISCOUNT_PRICE_MESSAGE);
+        System.out.println(formatPrice(price) + PRICE_UNIT);
     }
 
     private static String formatPrice(int price) {
