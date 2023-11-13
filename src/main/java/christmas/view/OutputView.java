@@ -17,10 +17,12 @@ public class OutputView {
     private static final String BEFORE_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<할인 전 총주문 금액>";
     private static final String GIFT_REWARD_MESSAGE = NEXT_LINE + "<증정 메뉴>";
     private static final String REWARD_MESSAGE = NEXT_LINE + "<혜택 내역>";
+    private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = NEXT_LINE + "<총혜택 금액>";
     private static final String MENU_INFORMATION = "{0} {1}개";
     private static final String REWARD_INFORMATION = "{0}: -{1}원";
     private static final String PRICE_UNIT = "원";
     private static final String NONE = "없음";
+    private static final String MINUS = "-";
     private static final Integer ZERO = 0;
 
     public static void printStartMessage() {
@@ -60,6 +62,15 @@ public class OutputView {
         }
         rewards.stream()
                 .forEach(rewardDiscount -> System.out.println(formatReward(rewardDiscount)));
+    }
+
+    public static void printTotalDiscountPrice(int price) {
+        System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE);
+        if(price == ZERO){
+            System.out.println(price + PRICE_UNIT);
+            return;
+        }
+        System.out.println(MINUS + formatPrice(price));
     }
 
     private static String formatPrice(int price) {
