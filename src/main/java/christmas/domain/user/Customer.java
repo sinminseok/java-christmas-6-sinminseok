@@ -54,6 +54,10 @@ public class Customer {
         return findBeforeDiscountPrice() - calculateDiscountRewardPrice();
     }
 
+    public Badge awardBadge() {
+        return Badge.of(calculateTotalRewardPrice());
+    }
+
     private EventRewardContext createRewardContext() {
         return new EventRewardContext(order, calendarDay);
     }
