@@ -5,7 +5,6 @@ import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.Events;
 import christmas.domain.event.Reward;
 import christmas.domain.event.RewardMenu;
-import christmas.domain.menu.OrderMenu;
 import christmas.domain.order.Order;
 
 import java.util.List;
@@ -31,9 +30,16 @@ public class Customer {
         return events.findRewards(context);
     }
 
-    public List<RewardMenu> findMenuRewards(){
+    public List<RewardMenu> findMenuRewards() {
         EventRewardContext context = createRewardContext();
         return events.findRewardMenus(context);
+    }
+
+    public Integer calculateTotalRewardPrice() {
+        List<Reward> allReward = findAllReward();
+        return allReward.stream()
+                .mapToInt(reward -> reward.getDiscountPrice())
+                .sum();
     }
 
     private EventRewardContext createRewardContext() {

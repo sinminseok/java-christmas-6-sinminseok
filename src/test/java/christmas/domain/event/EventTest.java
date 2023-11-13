@@ -49,7 +49,7 @@ public class EventTest {
         Event event = Event.of("증정 이벤트", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new GiftEventCondition());
         RewardMenu rewardMenu = new RewardMenu(Menu.of("샴페인", 25000, MenuType.DRINKING), 1);
         //when
-        RewardMenu menuItem = event.wrapMenuItemReward(null);
+        RewardMenu menuItem = event.wrapRewardMenu(null);
         //then
         Assertions.assertThat(menuItem).isEqualTo(rewardMenu);
     }

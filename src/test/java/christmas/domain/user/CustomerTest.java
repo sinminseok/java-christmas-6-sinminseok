@@ -43,4 +43,12 @@ public class CustomerTest {
         //then
         Assertions.assertThat(menuRewards.size()).isEqualTo(1);
     }
+
+    @Test
+    void calculateTotalRewardPrice_메서드는_적용된_총_혜택_금액을_계산한다(){
+        //when
+        Integer rewardPrice = customer.calculateTotalRewardPrice();
+        //then
+        Assertions.assertThat(rewardPrice).isEqualTo(41538);
+    }
 }
