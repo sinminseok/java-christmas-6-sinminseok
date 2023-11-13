@@ -34,19 +34,19 @@ public class MainController {
         CalendarDay selectDay = registerVisitDay();
         Order order = registerOrder();
         Events events = findApplicableEvents(order, selectDay);
-        Plan customer = customerService.createPlanner(events, order, selectDay);
-        showPlanner(customer, selectDay, order);
+        Plan plan = customerService.createPlanner(events, order, selectDay);
+        showPlan(plan, selectDay, order);
     }
 
-    private void showPlanner(Plan customer, CalendarDay calendarDay, Order order) {
+    private void showPlan(Plan plan, CalendarDay calendarDay, Order order) {
         outputView.printEventPreview(calendarDay.getDay());
         outputView.printOrderMenu(orderService.findOrderMenus(order));
-        outputView.printBeforeDiscountPrice(customerService.findBeforeDiscountPrice(customer));
-        outputView.printGiftReward(customerService.findGiftReward(customer));
-        outputView.printRewards(customerService.findRewards(customer));
-        outputView.printTotalDiscountPrice(customerService.findTotalRewardPrice(customer));
-        outputView.printAfterDiscountPrice(customerService.findPayPrice(customer));
-        outputView.printBadge(customerService.findBadge(customer));
+        outputView.printBeforeDiscountPrice(customerService.findBeforeDiscountPrice(plan));
+        outputView.printGiftReward(customerService.findGiftReward(plan));
+        outputView.printRewards(customerService.findRewards(plan));
+        outputView.printTotalDiscountPrice(customerService.findTotalRewardPrice(plan));
+        outputView.printAfterDiscountPrice(customerService.findPayPrice(plan));
+        outputView.printBadge(customerService.findBadge(plan));
     }
 
 
