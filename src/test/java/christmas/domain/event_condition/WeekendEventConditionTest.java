@@ -4,14 +4,18 @@ import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventConditionContext;
 import christmas.domain.event.EventReward;
 import christmas.domain.event.EventRewardContext;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
+import christmas.domain.menu.OrderMenu;
+import christmas.domain.order.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import static christmas.data.DummyData.provideEventRewardParameterData;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WeekendEventConditionTest {
@@ -37,10 +41,11 @@ public class WeekendEventConditionTest {
     @Test
     void 주말_할인_이벤트_보상은_메인메뉴_갯수1개당_2023원_할인이다() {
         //given
-        // provideEventRewardParameterData 는 3개의 메인 메뉴를 제공한다.
-        EventRewardContext rewardStandard = provideEventRewardParameterData();
+        OrderMenu orderMenu = new OrderMenu(Menu.of("메인메뉴", 10000, MenuType.MAIN), 3);
+        Order order = new Order(List.of(orderMenu));
+        EventRewardContext context = new EventRewardContext(order, null);
         //when
-        EventReward eventReward = weekendEventCondition.giveReward(rewardStandard);
+        EventReward eventReward = weekendEventCondition.giveReward(context);
         //then
         assertThat(eventReward.getRewardValue()).isEqualTo(6069);
     }
