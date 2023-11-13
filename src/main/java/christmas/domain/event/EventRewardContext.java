@@ -17,7 +17,7 @@ public class EventRewardContext {
     }
 
     public int countMenuByType(MenuType menuType) {
-        return order.getMenuItems().stream()
+        return order.getOrderMenus().stream()
                 .filter(menuItem -> menuItem.compareMenuType(menuType))
                 .mapToInt(OrderMenu::getCount)
                 .sum();

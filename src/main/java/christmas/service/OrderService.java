@@ -26,7 +26,7 @@ public class OrderService {
     }
 
     public List<MenuItemDto> findOrderMenus(Order order) {
-        return order.getMenuItems().stream()
+        return order.getOrderMenus().stream()
                 .map(orderMenu -> new MenuItemDto(orderMenu.getMenuName(), orderMenu.getCount()))
                 .collect(Collectors.toList());
     }
