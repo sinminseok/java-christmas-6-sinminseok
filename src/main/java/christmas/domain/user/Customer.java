@@ -4,6 +4,7 @@ import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.Events;
 import christmas.domain.event.Reward;
+import christmas.domain.event.RewardMenu;
 import christmas.domain.menu.OrderMenu;
 import christmas.domain.order.Order;
 
@@ -30,9 +31,9 @@ public class Customer {
         return events.findRewards(context);
     }
 
-    public List<OrderMenu> findMenuRewards(){
+    public List<RewardMenu> findMenuRewards(){
         EventRewardContext context = createRewardContext();
-        return events.findMenuRewards(context);
+        return events.findRewardMenus(context);
     }
 
     private EventRewardContext createRewardContext() {

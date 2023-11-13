@@ -26,12 +26,11 @@ public class Event {
         return wrapReward(eventReward);
     }
 
-    public OrderMenu wrapMenuItemReward(EventRewardContext context) {
+    public RewardMenu wrapRewardMenu(EventRewardContext context) {
         EventReward eventReward = condition.giveReward(context);
-        return (OrderMenu) eventReward.getRewardValue();
+        return (RewardMenu) eventReward.getRewardValue();
     }
 
-    // 제네릭 타입은 EventReward 를 Reward 로 변경
     private Reward wrapReward(EventReward eventReward) {
         if (eventReward.isMenuItemType()) {
             return new Reward(name, ((OrderMenu) eventReward.getRewardValue()).calculatePrice());

@@ -28,7 +28,7 @@ public class EventsTest {
         Events events = provideEventsData();
         EventRewardContext rewardStandard = provideEventRewardContextData();
         //when
-        List<OrderMenu> giftRewards = events.findMenuRewards(rewardStandard);
+        List<RewardMenu> giftRewards = events.findRewardMenus(rewardStandard);
         //then
         Assertions.assertThat(giftRewards.size()).isEqualTo(1);
     }

@@ -47,9 +47,9 @@ public class EventTest {
     void wrapMenuItemReward_메서드는_이벤트_보상을_MenuItem_타입으로_반환한다() {
         //given
         Event event = Event.of("증정 이벤트", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new GiftEventCondition());
-        OrderMenu rewardMenu = new OrderMenu(Menu.of("샴페인", 25000, MenuType.DRINKING), 1);
+        RewardMenu rewardMenu = new RewardMenu(Menu.of("샴페인", 25000, MenuType.DRINKING), 1);
         //when
-        OrderMenu menuItem = event.wrapMenuItemReward(null);
+        RewardMenu menuItem = event.wrapMenuItemReward(null);
         //then
         Assertions.assertThat(menuItem).isEqualTo(rewardMenu);
     }
