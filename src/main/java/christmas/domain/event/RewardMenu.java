@@ -13,6 +13,10 @@ public class RewardMenu {
         this.count = count;
     }
 
+    public Integer calculatePrice() {
+        return menu.getPrice() * count;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
