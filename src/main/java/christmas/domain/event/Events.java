@@ -19,7 +19,7 @@ public class Events {
     public List<RewardMenu> findRewardMenus(EventRewardContext context) {
         return events.stream()
                 .filter(Event::isGiftEvent)
-                .map(event -> event.wrapRewardMenu(context))
+                .map(event -> event.findRewardMenu(context))
                 .collect(Collectors.toList());
     }
 

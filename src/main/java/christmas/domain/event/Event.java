@@ -21,13 +21,15 @@ public class Event {
     }
 
     public Reward findReward(EventRewardContext context) {
-        EventReward eventReward = condition.giveReward(context);
-        return wrapReward(eventReward);
+        return wrapReward(findEventReward(context));
     }
 
-    public RewardMenu wrapRewardMenu(EventRewardContext context) {
-        EventReward eventReward = condition.giveReward(context);
-        return (RewardMenu) eventReward.getRewardValue();
+    public RewardMenu findRewardMenu(EventRewardContext context) {
+        return (RewardMenu) findEventReward(context).getRewardValue();
+    }
+
+    private EventReward findEventReward(EventRewardContext context) {
+        return condition.giveReward(context);
     }
 
     private Reward wrapReward(EventReward eventReward) {

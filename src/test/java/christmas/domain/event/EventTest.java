@@ -35,11 +35,11 @@ public class EventTest {
     }
 
     @Test
-    void wrapRewardMenu_메서드는_증정_이벤트_보상을_반환하기_위해_RewardMenu_로_반환한다() {
+    void findRewardMenu_메서드는_증정_이벤트_보상을_반환하기_위해_RewardMenu_로_반환한다() {
         //given
         EventRewardContext context = provideTestRewardContext();
         //when
-        RewardMenu rewardMenu = giftEvent.wrapRewardMenu(context);
+        RewardMenu rewardMenu = giftEvent.findRewardMenu(context);
         //then
         assertThat(rewardMenu.getMenuName()).isEqualTo("증정메뉴");
         assertThat(rewardMenu.getCount()).isEqualTo(1);
