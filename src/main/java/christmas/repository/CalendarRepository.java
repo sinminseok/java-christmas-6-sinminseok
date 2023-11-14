@@ -1,12 +1,15 @@
 package christmas.repository;
 
 import christmas.domain.day.CalendarDay;
+import christmas.utils.ErrorMessage;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static christmas.utils.ErrorConstants.VISIT_DAY_ERROR;
 
 public class CalendarRepository {
     private static final Integer MONTH_START_DAY = 1;
@@ -30,6 +33,6 @@ public class CalendarRepository {
         return DAYS.stream()
                 .filter(calendarDay -> calendarDay.isSameDay(START_DATE.withDayOfMonth(day)))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new ErrorMessage(VISIT_DAY_ERROR));
     }
 }
