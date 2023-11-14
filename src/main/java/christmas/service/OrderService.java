@@ -24,10 +24,4 @@ public class OrderService {
                 ))
                 .collect(Collectors.toList()));
     }
-
-    public List<MenuWithAmountDto> findOrderMenus(Order order) {
-        return order.getOrderMenus().stream()
-                .map(orderMenu -> new MenuWithAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
-                .collect(Collectors.toList());
-    }
 }

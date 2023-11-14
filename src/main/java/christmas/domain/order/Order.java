@@ -1,9 +1,12 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.MenuType;
+import christmas.dto.MenuWithAmountDto;
+import christmas.dto.OrderDto;
 import christmas.utils.ErrorMessage;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static christmas.utils.ErrorConstants.ORDER_ERROR;
 
@@ -51,5 +54,12 @@ public class Order {
 
     public List<OrderMenu> getOrderMenus() {
         return orderMenus;
+    }
+
+    public OrderDto toDto() {
+        List<MenuWithAmountDto> collect = orderMenus.stream()
+                .map(orderMenu -> new MenuWithAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
+                .collect(Collectors.toList());
+        return new OrderDto(collect);
     }
 }

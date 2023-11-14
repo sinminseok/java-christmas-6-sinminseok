@@ -60,7 +60,7 @@ public class MainController {
 
     private void showPlan(Plan plan, CalendarDay calendarDay, Order order) {
         outputView.printEventPreview(calendarDay.getDay());
-        outputView.printOrderMenu(orderService.findOrderMenus(order));
+        outputView.printOrderMenu(order.toDto().getOrderMenuDtos());
         outputView.printBeforeDiscountPrice(planService.findBeforeDiscountPrice(plan));
         outputView.printGiftReward(planService.findGiftReward(plan));
         outputView.printRewards(planService.findRewards(plan));
