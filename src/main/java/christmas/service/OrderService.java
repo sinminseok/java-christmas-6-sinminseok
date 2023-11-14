@@ -2,7 +2,7 @@ package christmas.service;
 
 import christmas.domain.order.OrderMenu;
 import christmas.domain.order.Order;
-import christmas.dto.MenuItemDto;
+import christmas.dto.MenuWithAmountDto;
 import christmas.dto.OrderDto;
 import christmas.repository.MenuRepository;
 
@@ -25,9 +25,9 @@ public class OrderService {
                 .collect(Collectors.toList()));
     }
 
-    public List<MenuItemDto> findOrderMenus(Order order) {
+    public List<MenuWithAmountDto> findOrderMenus(Order order) {
         return order.getOrderMenus().stream()
-                .map(orderMenu -> new MenuItemDto(orderMenu.getMenuName(), orderMenu.getCount()))
+                .map(orderMenu -> new MenuWithAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
                 .collect(Collectors.toList());
     }
 }

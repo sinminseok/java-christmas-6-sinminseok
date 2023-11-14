@@ -3,13 +3,13 @@ package christmas.dto;
 import java.util.List;
 
 public class OrderDto {
-    private final List<MenuItemDto> orderMenuDtos;
+    private final List<MenuWithAmountDto> orderMenuDtos;
 
-    public OrderDto(List<MenuItemDto> orderMenuDtos) {
+    public OrderDto(List<MenuWithAmountDto> orderMenuDtos) {
         this.orderMenuDtos = orderMenuDtos;
     }
 
-    public List<MenuItemDto> getOrderMenuDtos() {
+    public List<MenuWithAmountDto> getOrderMenuDtos() {
         return orderMenuDtos;
     }
 }

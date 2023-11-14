@@ -7,7 +7,7 @@ import christmas.domain.event.RewardMenu;
 import christmas.domain.order.Order;
 import christmas.domain.plan.Badge;
 import christmas.domain.plan.Plan;
-import christmas.dto.MenuItemDto;
+import christmas.dto.MenuWithAmountDto;
 import christmas.dto.RewardDto;
 
 import java.util.List;
@@ -23,10 +23,10 @@ public class PlanService {
         return customer.findBeforeDiscountPrice();
     }
 
-    public List<MenuItemDto> findGiftReward(Plan planner) {
+    public List<MenuWithAmountDto> findGiftReward(Plan planner) {
         List<RewardMenu> giftRewards = planner.findMenuRewards();
         return giftRewards.stream()
-                .map(menuReward -> new MenuItemDto(menuReward.getMenuName(), menuReward.getCount()))
+                .map(menuReward -> new MenuWithAmountDto(menuReward.getMenuName(), menuReward.getCount()))
                 .collect(Collectors.toList());
     }
 
