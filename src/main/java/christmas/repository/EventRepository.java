@@ -19,7 +19,7 @@ public class EventRepository {
         events.add(Event.of("증정 이벤트", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 31), new GiftEventCondition()));
     }
 
-    public List<Event> findAll() {
+    public static List<Event> findAll() {
         return Collections.unmodifiableList(events);
     }
 }
