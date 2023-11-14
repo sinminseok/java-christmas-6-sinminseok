@@ -11,7 +11,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public void saveCustomer(Plan plan) {
+    public void save(Plan plan) {
         customerRepository.save(Customer.from(plan));
     }
 }
