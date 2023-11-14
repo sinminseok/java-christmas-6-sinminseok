@@ -25,12 +25,12 @@ class EventServiceTest {
     }
 
     @Test
-    void findApplicableEvents_메서드는_적용가능한_이벤트를_찾아_Events_를_만들어_반환한다() {
+    void findEvents_메서드는_적용가능한_이벤트를_찾아_Events_를_만들어_반환한다() {
         //given
         Order order = provideOrder();
         CalendarDay calendarDay = provideCalendarDay();
         //when
-        Events applicableEvents = eventService.findApplicableEvents(order, calendarDay);
+        Events applicableEvents = eventService.findEvents(order, calendarDay);
         //then
         Assertions.assertThat(applicableEvents).isNotNull();
     }
