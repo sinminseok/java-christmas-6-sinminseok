@@ -10,13 +10,13 @@ public class WeekDayEventCondition implements EventCondition {
     private static final Integer DISCOUNT_PRICE_PER_DESERT_MENU = 2023;
 
     @Override
-    public boolean canApply(EventConditionContext eventApplyParameter) {
-        return eventApplyParameter.isWeekDayEvent();
+    public boolean canApply(EventConditionContext context) {
+        return context.isWeekDayEvent();
     }
 
     @Override
-    public EventReward giveReward(EventRewardContext rewardParameter) {
-        int discountPrice = rewardParameter.countMenuByType(MenuType.DESERT) * DISCOUNT_PRICE_PER_DESERT_MENU;
+    public EventReward giveReward(EventRewardContext context) {
+        int discountPrice = context.countMenuByType(MenuType.DESERT) * DISCOUNT_PRICE_PER_DESERT_MENU;
         return new EventReward(discountPrice);
     }
 

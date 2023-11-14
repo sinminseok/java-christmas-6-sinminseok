@@ -9,12 +9,12 @@ public class SpecialEventCondition implements EventCondition {
     private static final Integer SPECIAL_EVENT_REWARD = 1000;
 
     @Override
-    public boolean canApply(EventConditionContext eventApplyParameter) {
-        return eventApplyParameter.getHasStar();
+    public boolean canApply(EventConditionContext context) {
+        return context.getHasStar();
     }
 
     @Override
-    public EventReward giveReward(EventRewardContext eventRewardParameter) {
+    public EventReward giveReward(EventRewardContext context) {
         return new EventReward(SPECIAL_EVENT_REWARD);
     }
 

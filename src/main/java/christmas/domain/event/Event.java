@@ -20,8 +20,8 @@ public class Event {
         return new Event(name, new EventPeriod(startDate, endDate), condition);
     }
 
-    public Reward findReward(EventRewardContext eventRewardContext) {
-        EventReward eventReward = condition.giveReward(eventRewardContext);
+    public Reward findReward(EventRewardContext context) {
+        EventReward eventReward = condition.giveReward(context);
         return wrapReward(eventReward);
     }
 

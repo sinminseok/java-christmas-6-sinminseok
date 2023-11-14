@@ -14,13 +14,13 @@ public class ChristmasEventCondition implements EventCondition {
     private static final LocalDate END_DATE = LocalDate.of(2023, 12, 25);
 
     @Override
-    public boolean canApply(EventConditionContext eventApplyParameter) {
-        return eventApplyParameter.isContainDay(START_DATE, END_DATE);
+    public boolean canApply(EventConditionContext context) {
+        return context.isContainDay(START_DATE, END_DATE);
     }
 
     @Override
-    public EventReward giveReward(EventRewardContext rewardParameter) {
-        int daysFromStart = rewardParameter.calculateDaysBetweenStartAndGivenDate(START_DATE);
+    public EventReward giveReward(EventRewardContext context) {
+        int daysFromStart = context.calculateDaysBetweenStartAndGivenDate(START_DATE);
         int discountAmount = START_DISCOUNT_PRICE + (daysFromStart * INCREASE_DISCOUNT_PRICE_PER_DAY);
         return new EventReward(discountAmount);
     }

@@ -29,7 +29,6 @@ public class AppConfig {
         return new CalendarService(calendarRepository);
     }
 
-
     public static EventService getEventService() {
         return new EventService(eventRepository);
     }

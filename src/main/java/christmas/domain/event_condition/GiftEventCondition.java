@@ -15,12 +15,12 @@ public class GiftEventCondition implements EventCondition {
     private static final RewardMenu GIFT_EVENT_REWARD = new RewardMenu(CHAMPAGNE, REWARD_AMOUNT);
 
     @Override
-    public boolean canApply(EventConditionContext eventApplyParameter) {
-        return GIFT_EVENT_TOTAL_PRICE_STANDARD <= eventApplyParameter.getOrderPrice();
+    public boolean canApply(EventConditionContext context) {
+        return GIFT_EVENT_TOTAL_PRICE_STANDARD <= context.getOrderPrice();
     }
 
     @Override
-    public EventReward giveReward(EventRewardContext eventRewardParameter) {
+    public EventReward giveReward(EventRewardContext context) {
         return new EventReward(GIFT_EVENT_REWARD);
     }
 
