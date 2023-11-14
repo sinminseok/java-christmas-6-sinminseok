@@ -7,6 +7,8 @@ import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
 import christmas.domain.order.OrderMenu;
 import christmas.domain.order.Order;
+import christmas.domain.reward.Reward;
+import christmas.domain.reward.RewardMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

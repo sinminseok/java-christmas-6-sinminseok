@@ -1,5 +1,8 @@
 package christmas.domain.event;
 
+import christmas.domain.reward.Reward;
+import christmas.domain.reward.RewardMenu;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

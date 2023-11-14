@@ -1,5 +1,8 @@
 package christmas.domain.event;
 
+import christmas.domain.reward.Reward;
+import christmas.domain.reward.RewardMenu;
+
 /*
 다양한 유형의 보상을 반환하기 위해 제네릭 타입으로 선언
  */

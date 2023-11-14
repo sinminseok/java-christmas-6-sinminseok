@@ -4,6 +4,7 @@ import christmas.domain.day.CalendarDay;
 import christmas.domain.event_condition.*;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
+import christmas.domain.reward.RewardMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

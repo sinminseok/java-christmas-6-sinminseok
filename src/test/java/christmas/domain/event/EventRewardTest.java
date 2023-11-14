@@ -2,6 +2,8 @@ package christmas.domain.event;
 
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
+import christmas.domain.reward.Reward;
+import christmas.domain.reward.RewardMenu;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

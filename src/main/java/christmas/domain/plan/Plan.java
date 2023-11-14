@@ -3,8 +3,8 @@ package christmas.domain.plan;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.Events;
-import christmas.domain.event.Reward;
-import christmas.domain.event.RewardMenu;
+import christmas.domain.reward.Reward;
+import christmas.domain.reward.RewardMenu;
 import christmas.domain.order.Order;
 
 import java.util.List;
