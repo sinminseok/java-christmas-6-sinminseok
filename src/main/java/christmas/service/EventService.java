@@ -19,15 +19,19 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public Events findApplicableEvents(Order order, CalendarDay day) {
+    public Events findEvents(Order order, CalendarDay day) {
         if (order.canApplyEvent()) {
-            EventConditionContext eventApplyParameter = new EventConditionContext(order.getOrderPrice(), day);
-            List<Event> findEvents = findAll().stream()
-                    .filter(event -> event.isApplicable(eventApplyParameter))
-                    .collect(Collectors.toList());
-            return new Events(findEvents);
+            findApplicableEvents(order, day);
         }
         return new Events(Collections.emptyList());
+    }
+
+    private Events findApplicableEvents(Order order, CalendarDay day){
+        EventConditionContext eventApplyParameter = new EventConditionContext(order.getOrderPrice(), day);
+        List<Event> findEvents = findAll().stream()
+                .filter(event -> event.isApplicable(eventApplyParameter))
+                .collect(Collectors.toList());
+        return new Events(findEvents);
     }
 
     private List<Event> findAll() {
