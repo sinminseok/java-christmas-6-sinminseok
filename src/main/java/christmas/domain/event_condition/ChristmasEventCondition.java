@@ -14,7 +14,7 @@ public class ChristmasEventCondition implements EventCondition {
     private static final LocalDate END_DATE = LocalDate.of(2023, 12, 25);
 
     @Override
-    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+    public boolean canApply(EventConditionContext eventApplyParameter) {
         return eventApplyParameter.isContainDay(START_DATE, END_DATE);
     }
 
@@ -26,7 +26,7 @@ public class ChristmasEventCondition implements EventCondition {
     }
 
     @Override
-    public EventType checkEventType() {
+    public EventType checkType() {
         return EventType.DISCOUNT;
     }
 }

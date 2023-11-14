@@ -10,7 +10,7 @@ public class WeekDayEventCondition implements EventCondition {
     private static final Integer DISCOUNT_PRICE_PER_DESERT_MENU = 2023;
 
     @Override
-    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+    public boolean canApply(EventConditionContext eventApplyParameter) {
         return eventApplyParameter.isWeekDayEvent();
     }
 
@@ -21,7 +21,7 @@ public class WeekDayEventCondition implements EventCondition {
     }
 
     @Override
-    public EventType checkEventType() {
+    public EventType checkType() {
         return EventType.DISCOUNT;
     }
 }

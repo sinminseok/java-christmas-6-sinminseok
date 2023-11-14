@@ -83,7 +83,7 @@ public class EventTest {
     public static class TestDiscountEventCondition implements EventCondition {
 
         @Override
-        public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+        public boolean canApply(EventConditionContext eventApplyParameter) {
             return true;
         }
 
@@ -93,7 +93,7 @@ public class EventTest {
         }
 
         @Override
-        public EventType checkEventType() {
+        public EventType checkType() {
             return EventType.DISCOUNT;
         }
     }
@@ -102,7 +102,7 @@ public class EventTest {
     public static class TestGiftEventCondition implements EventCondition {
 
         @Override
-        public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+        public boolean canApply(EventConditionContext eventApplyParameter) {
             return true;
         }
 
@@ -112,7 +112,7 @@ public class EventTest {
         }
 
         @Override
-        public EventType checkEventType() {
+        public EventType checkType() {
             return EventType.GIFT;
         }
     }

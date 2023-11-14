@@ -4,6 +4,9 @@ import christmas.domain.day.CalendarDay;
 
 import java.time.LocalDate;
 
+/*
+이벤트 참여 여부를 확인하기 위해선 총 주문금액, 선택한 캘린더 날짜 정보가 필요하다
+ */
 public class EventConditionContext {
     private final Integer orderPrice;
     private final CalendarDay calendarDay;

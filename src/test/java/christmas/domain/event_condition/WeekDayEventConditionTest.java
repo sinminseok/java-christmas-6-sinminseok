@@ -33,7 +33,7 @@ public class WeekDayEventConditionTest {
         //given
         EventConditionContext context = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
         //when
-        boolean canApplyEvent = weekDayEventCondition.canApplyEvent(context);
+        boolean canApplyEvent = weekDayEventCondition.canApply(context);
         //then
         assertThat(canApplyEvent).isTrue();
     }

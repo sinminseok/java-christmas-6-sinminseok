@@ -31,7 +31,7 @@ public class GiftEventConditionTest {
         //given
         EventConditionContext eventApplyParameter = new EventConditionContext(orderPrice, new CalendarDay(LocalDate.of(2023, 12, 25), false));
         //when
-        boolean canApplyEvent = giftEventCondition.canApplyEvent(eventApplyParameter);
+        boolean canApplyEvent = giftEventCondition.canApply(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
     }

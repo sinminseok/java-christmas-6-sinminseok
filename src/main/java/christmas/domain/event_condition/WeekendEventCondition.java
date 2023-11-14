@@ -11,7 +11,7 @@ public class WeekendEventCondition implements EventCondition {
     private static final Integer DISCOUNT_PRICE_PER_MAIN_MENU = 2023;
 
     @Override
-    public boolean canApplyEvent(EventConditionContext context) {
+    public boolean canApply(EventConditionContext context) {
         return context.isWeekendEvent();
     }
 
@@ -22,7 +22,7 @@ public class WeekendEventCondition implements EventCondition {
     }
 
     @Override
-    public EventType checkEventType() {
+    public EventType checkType() {
         return EventType.DISCOUNT;
     }
 }

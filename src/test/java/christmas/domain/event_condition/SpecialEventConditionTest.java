@@ -28,7 +28,7 @@ public class SpecialEventConditionTest {
         CalendarDay day = new CalendarDay(LocalDate.of(2023, 12, 23), hasStar);
         EventConditionContext eventApplyParameter = new EventConditionContext(1000, day);
         //when
-        boolean canApplyEvent = specialEventCondition.canApplyEvent(eventApplyParameter);
+        boolean canApplyEvent = specialEventCondition.canApply(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
     }

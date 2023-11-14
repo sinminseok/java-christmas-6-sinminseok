@@ -33,7 +33,7 @@ public class WeekendEventConditionTest {
         //given
         EventConditionContext eventApplyParameter = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
         //when
-        boolean canApplyEvent = weekendEventCondition.canApplyEvent(eventApplyParameter);
+        boolean canApplyEvent = weekendEventCondition.canApply(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isTrue();
     }

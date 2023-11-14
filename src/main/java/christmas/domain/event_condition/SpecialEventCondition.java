@@ -9,7 +9,7 @@ public class SpecialEventCondition implements EventCondition {
     private static final Integer SPECIAL_EVENT_REWARD = 1000;
 
     @Override
-    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+    public boolean canApply(EventConditionContext eventApplyParameter) {
         return eventApplyParameter.getHasStar();
     }
 
@@ -19,7 +19,7 @@ public class SpecialEventCondition implements EventCondition {
     }
 
     @Override
-    public EventType checkEventType() {
+    public EventType checkType() {
         return EventType.DISCOUNT;
     }
 }

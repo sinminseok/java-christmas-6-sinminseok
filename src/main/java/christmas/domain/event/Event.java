@@ -38,15 +38,15 @@ public class Event {
     }
 
     public boolean isApplicable(EventConditionContext context) {
-        return containsDay(context.getCalendarDay()) && condition.canApplyEvent(context);
+        return containsDay(context.getCalendarDay()) && condition.canApply(context);
     }
 
     public boolean isGiftEvent() {
-        return condition.checkEventType().equals(EventType.GIFT);
+        return condition.checkType().equals(EventType.GIFT);
     }
 
     public boolean isDiscountEvent() {
-        return condition.checkEventType().equals(EventType.DISCOUNT);
+        return condition.checkType().equals(EventType.DISCOUNT);
     }
 
     private boolean containsDay(CalendarDay day) {

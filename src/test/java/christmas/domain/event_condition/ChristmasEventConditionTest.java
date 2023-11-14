@@ -27,7 +27,7 @@ public class ChristmasEventConditionTest {
         //given
         EventConditionContext eventApplyParameter = new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, selectDay), false));
         //when
-        boolean canApplyEvent = christmasEventCondition.canApplyEvent(eventApplyParameter);
+        boolean canApplyEvent = christmasEventCondition.canApply(eventApplyParameter);
         //then
         assertThat(canApplyEvent).isEqualTo(result);
     }

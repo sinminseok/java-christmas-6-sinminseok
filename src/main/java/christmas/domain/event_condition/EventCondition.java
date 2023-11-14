@@ -6,9 +6,9 @@ import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.EventType;
 
 public interface EventCondition {
-    boolean canApplyEvent(EventConditionContext eventApplyParameter);
+    boolean canApply(EventConditionContext eventApplyParameter);
 
     EventReward giveReward(EventRewardContext eventRewardParameter);
 
-    EventType checkEventType();
+    EventType checkType();
 }

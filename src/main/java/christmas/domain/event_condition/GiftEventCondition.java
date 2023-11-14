@@ -15,7 +15,7 @@ public class GiftEventCondition implements EventCondition {
     private static final RewardMenu GIFT_EVENT_REWARD = new RewardMenu(CHAMPAGNE, REWARD_AMOUNT);
 
     @Override
-    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
+    public boolean canApply(EventConditionContext eventApplyParameter) {
         return GIFT_EVENT_TOTAL_PRICE_STANDARD <= eventApplyParameter.getOrderPrice();
     }
 
@@ -25,7 +25,7 @@ public class GiftEventCondition implements EventCondition {
     }
 
     @Override
-    public EventType checkEventType() {
+    public EventType checkType() {
         return EventType.GIFT;
     }
 }
