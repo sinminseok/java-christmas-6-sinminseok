@@ -22,6 +22,14 @@ public class CalendarDay {
         return this.day.equals(day);
     }
 
+    public boolean isWeekend() {
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    }
+
+    public boolean isWeekDay() {
+        return dayOfWeek != DayOfWeek.FRIDAY && dayOfWeek != DayOfWeek.SATURDAY;
+    }
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }

@@ -7,15 +7,12 @@ import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.EventType;
 import christmas.domain.menu.MenuType;
 
-import java.time.DayOfWeek;
-
 public class WeekendEventCondition implements EventCondition {
     private static final Integer DISCOUNT_PRICE_PER_MAIN_MENU = 2023;
 
     @Override
-    public boolean canApplyEvent(EventConditionContext eventApplyParameter) {
-        DayOfWeek dayOfWeek = eventApplyParameter.getCalendarDay().getDayOfWeek();
-        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    public boolean canApplyEvent(EventConditionContext context) {
+        return context.isWeekendEvent();
     }
 
     @Override

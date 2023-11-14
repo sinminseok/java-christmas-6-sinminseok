@@ -17,6 +17,14 @@ public class EventConditionContext {
         return !this.calendarDay.getDay().isBefore(startDate) && !this.calendarDay.getDay().isAfter(endDate);
     }
 
+    public boolean isWeekendEvent() {
+        return calendarDay.isWeekend();
+    }
+
+    public boolean isWeekDayEvent() {
+        return calendarDay.isWeekDay();
+    }
+
     public Integer getOrderPrice() {
         return orderPrice;
     }
