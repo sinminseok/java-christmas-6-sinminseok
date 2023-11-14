@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.menu.Menu;
 import christmas.domain.order.OrderMenu;
 import christmas.domain.order.Order;
 import christmas.dto.MenuWithAmountDto;
@@ -17,11 +18,22 @@ public class OrderService {
     }
 
     public Order createOrder(OrderDto orderDto) {
-        return new Order(orderDto.getOrderMenuDtos().stream()
-                .map(menuItemDto -> new OrderMenu(
-                        menuRepository.findByName(menuItemDto.getMenuName()),
-                        menuItemDto.getAmount()
-                ))
-                .collect(Collectors.toList()));
+        List<OrderMenu> orderMenus = createOrderMenus(orderDto.getOrderMenuDtos());
+        return new Order(orderMenus);
+    }
+
+    private List<OrderMenu> createOrderMenus(List<MenuWithAmountDto> menuWithAmountDtos) {
+        return menuWithAmountDtos.stream()
+                .map(menuItemDto -> createOrderMenu(menuItemDto))
+                .collect(Collectors.toList());
+    }
+
+    private OrderMenu createOrderMenu(MenuWithAmountDto menuWithAmountDto) {
+        Menu menu = findMenuByName(menuWithAmountDto.getMenuName());
+        return new OrderMenu(menu, menuWithAmountDto.getAmount());
+    }
+
+    private Menu findMenuByName(String name) {
+        return menuRepository.findByName(name);
     }
 }
