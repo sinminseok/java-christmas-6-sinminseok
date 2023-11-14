@@ -12,22 +12,25 @@ public class Events {
 
     public List<Reward> findRewards(EventRewardContext context) {
         return events.stream()
-                .map(event -> event.findReward(context))
+                .map(event -> findEventReward(event, context))
                 .collect(Collectors.toList());
     }
 
     public List<RewardMenu> findRewardMenus(EventRewardContext context) {
         return events.stream()
                 .filter(Event::isGiftEvent)
-                .map(event -> event.findRewardMenu(context))
+                .map(event -> event.findReward(context).wrapRewardMenu())
                 .collect(Collectors.toList());
     }
 
     public List<Reward> findRewardDiscounts(EventRewardContext context) {
         return events.stream()
                 .filter(Event::isDiscountEvent)
-                .map(event -> event.findReward(context))
+                .map(event -> findEventReward(event, context))
                 .collect(Collectors.toList());
+    }
 
+    private Reward findEventReward(Event event, EventRewardContext context) {
+        return event.findReward(context).wrapReward(event.getName());
     }
 }

@@ -24,25 +24,13 @@ public class EventTest {
     }
 
     @Test
-    void findReward_메서드는_이벤트_보상을_Reward_타입으로_반환한다() {
+    void findReward_메서드는_이벤트가_부여하는_보상을_찾는다() {
         //given
         EventRewardContext context = provideTestRewardContext();
         //when
-        Reward reward = discountEvent.findReward(context);
+        EventReward reward = discountEvent.findReward(context);
         //then
-        assertThat(reward.getName()).isEqualTo("테스트 할인 이벤트");
-        assertThat(reward.getDiscountPrice()).isEqualTo(1000);
-    }
-
-    @Test
-    void findRewardMenu_메서드는_증정_이벤트_보상을_반환하기_위해_RewardMenu_로_반환한다() {
-        //given
-        EventRewardContext context = provideTestRewardContext();
-        //when
-        RewardMenu rewardMenu = giftEvent.findRewardMenu(context);
-        //then
-        assertThat(rewardMenu.getMenuName()).isEqualTo("증정메뉴");
-        assertThat(rewardMenu.getCount()).isEqualTo(1);
+        assertThat(reward.getRewardValue()).isEqualTo(1000);
     }
 
     @ParameterizedTest
