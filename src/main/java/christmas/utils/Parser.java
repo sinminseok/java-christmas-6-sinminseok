@@ -3,8 +3,9 @@ package christmas.utils;
 import java.util.List;
 
 public class Parser {
-    private static final String COMMA = ",";
-    private static final String DIVIDE_NAME_AMOUNT_STANDARD = "-";
+    public static final String COMMA = ",";
+    public static final String DIVIDE_NAME_AMOUNT_STANDARD = "-";
+    private static final String COMMA_SPACE_REGEX = ",\\s+";
 
     public static Integer parseInteger(String input) {
         return Integer.parseInt(input);
@@ -21,6 +22,6 @@ public class Parser {
     }
 
     public static String removeSpacesBetweenCommas(String input) {
-        return input.replaceAll(",\\s+", ","); // , 사이의 공백 제거
+        return input.replaceAll(COMMA_SPACE_REGEX, COMMA); // , 사이의 공백 제거
     }
 }
