@@ -1,10 +1,10 @@
 package christmas.dto;
 
-public class MenuWithAmountDto {
+public class MenuAmountDto {
     private final String menuName;
     private final Integer amount;
 
-    public MenuWithAmountDto(String menuName, Integer amount) {
+    public MenuAmountDto(String menuName, Integer amount) {
         this.menuName = menuName;
         this.amount = amount;
     }

@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.order.Order;
-import christmas.dto.MenuWithAmountDto;
+import christmas.dto.MenuAmountDto;
 import christmas.dto.OrderDto;
 import christmas.repository.MenuRepository;
 import org.assertj.core.api.Assertions;
@@ -31,8 +31,8 @@ public class OrderServiceTest {
     }
 
     private OrderDto provideOrderDto(){
-        MenuWithAmountDto menuWithAmountDto1 = new MenuWithAmountDto("타파스", 1);
-        MenuWithAmountDto menuWithAmountDto2 = new MenuWithAmountDto("초코케이크", 2);
+        MenuAmountDto menuWithAmountDto1 = new MenuAmountDto("타파스", 1);
+        MenuAmountDto menuWithAmountDto2 = new MenuAmountDto("초코케이크", 2);
         return new OrderDto(List.of(menuWithAmountDto1, menuWithAmountDto2));
     }
 }

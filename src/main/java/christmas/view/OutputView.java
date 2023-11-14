@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.domain.plan.Badge;
-import christmas.dto.MenuWithAmountDto;
+import christmas.dto.MenuAmountDto;
 import christmas.dto.RewardDto;
 
 import java.text.MessageFormat;
@@ -36,7 +36,7 @@ public class OutputView {
         System.out.println(MessageFormat.format(EVENT_PREVIEW_MESSAGE, localDate.getDayOfMonth()));
     }
 
-    public static void printOrderMenu(List<MenuWithAmountDto> orderMenus) {
+    public static void printOrderMenu(List<MenuAmountDto> orderMenus) {
         System.out.println(ORDER_MENU_MESSAGE);
         orderMenus.stream()
                 .forEach(orderMenuDto -> System.out.println(formatMenu(orderMenuDto)));
@@ -47,7 +47,7 @@ public class OutputView {
         System.out.println(formatPrice(price) + PRICE_UNIT);
     }
 
-    public static void printGiftReward(List<MenuWithAmountDto> rewards) {
+    public static void printGiftReward(List<MenuAmountDto> rewards) {
         System.out.println(GIFT_REWARD_MESSAGE);
         if (rewards.size() == ZERO) {
             System.out.println(NONE);
@@ -90,7 +90,7 @@ public class OutputView {
         return NumberFormat.getNumberInstance(Locale.KOREA).format(price);
     }
 
-    private static String formatMenu(MenuWithAmountDto orderMenu) {
+    private static String formatMenu(MenuAmountDto orderMenu) {
         return MessageFormat.format(MENU_INFORMATION, orderMenu.getMenuName(), orderMenu.getAmount());
     }
 

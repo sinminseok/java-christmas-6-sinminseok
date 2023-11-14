@@ -1,7 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.dto.MenuWithAmountDto;
+import christmas.dto.MenuAmountDto;
 import christmas.dto.OrderDto;
 
 import java.util.List;
@@ -31,16 +31,16 @@ public class InputView {
 
     private static OrderDto toInputOrderDto(String input) {
         List<String> informations = splitByComma(input);
-        List<MenuWithAmountDto> orderMenuDtoList = informations.stream()
+        List<MenuAmountDto> menuAmountDtos = informations.stream()
                 .map(InputView::parseOrderMenu)
                 .collect(Collectors.toList());
-        return new OrderDto(orderMenuDtoList);
+        return new OrderDto(menuAmountDtos);
     }
 
-    private static MenuWithAmountDto parseOrderMenu(String information) {
+    private static MenuAmountDto parseOrderMenu(String information) {
         List<String> strings = splitNameAndAmount(information);
         String menuName = strings.get(0);
         Integer amount = parseInteger(strings.get(1));
-        return new MenuWithAmountDto(menuName, amount);
+        return new MenuAmountDto(menuName, amount);
     }
 }

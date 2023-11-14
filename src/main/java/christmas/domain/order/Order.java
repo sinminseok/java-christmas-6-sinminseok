@@ -1,7 +1,7 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.MenuType;
-import christmas.dto.MenuWithAmountDto;
+import christmas.dto.MenuAmountDto;
 import christmas.dto.OrderDto;
 import christmas.utils.ErrorMessage;
 
@@ -57,8 +57,8 @@ public class Order {
     }
 
     public OrderDto toDto() {
-        List<MenuWithAmountDto> collect = orderMenus.stream()
-                .map(orderMenu -> new MenuWithAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
+        List<MenuAmountDto> collect = orderMenus.stream()
+                .map(orderMenu -> new MenuAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
                 .collect(Collectors.toList());
         return new OrderDto(collect);
     }
