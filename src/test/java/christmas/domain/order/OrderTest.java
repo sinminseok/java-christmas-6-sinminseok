@@ -1,7 +1,6 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.OrderMenu;
 import christmas.domain.menu.MenuType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

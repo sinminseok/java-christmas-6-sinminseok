@@ -3,7 +3,7 @@ package christmas.domain.event;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
-import christmas.domain.menu.OrderMenu;
+import christmas.domain.order.OrderMenu;
 import christmas.domain.order.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

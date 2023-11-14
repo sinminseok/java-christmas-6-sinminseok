@@ -1,4 +1,8 @@
-package christmas.domain.menu;
+package christmas.domain.order;
+
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuBase;
+import christmas.domain.menu.MenuType;
 
 public class OrderMenu extends MenuBase {
 

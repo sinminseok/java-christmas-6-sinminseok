@@ -1,7 +1,7 @@
 package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.menu.OrderMenu;
+import christmas.domain.order.OrderMenu;
 import christmas.domain.menu.MenuType;
 import christmas.domain.order.Order;
 

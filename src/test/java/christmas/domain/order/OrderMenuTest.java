@@ -1,5 +1,8 @@
-package christmas.domain.menu;
+package christmas.domain.order;
 
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
+import christmas.domain.order.OrderMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
