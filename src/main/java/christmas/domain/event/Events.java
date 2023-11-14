@@ -16,14 +16,14 @@ public class Events {
                 .collect(Collectors.toList());
     }
 
-    public List<RewardMenu> findMenuRewards(EventRewardContext context) {
+    public List<RewardMenu> findRewardMenus(EventRewardContext context) {
         return events.stream()
                 .filter(Event::isGiftEvent)
                 .map(event -> event.wrapRewardMenu(context))
                 .collect(Collectors.toList());
     }
 
-    public List<Reward> findDiscountRewards(EventRewardContext context) {
+    public List<Reward> findRewardDiscounts(EventRewardContext context) {
         return events.stream()
                 .filter(Event::isDiscountEvent)
                 .map(event -> event.findReward(context))

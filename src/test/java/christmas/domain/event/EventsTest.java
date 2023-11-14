@@ -31,18 +31,18 @@ public class EventsTest {
     }
 
     @Test
-    void findMenuRewards_메서드는_이벤트들_중_증정메뉴_보상만을_찾는다() {
+    void findRewardMenus_메서드는_이벤트들_중_증정메뉴_보상만을_찾는다() {
         //when
-        List<RewardMenu> menuRewards = events.findMenuRewards(null);
+        List<RewardMenu> menuRewards = events.findRewardMenus(null);
         //then
         Assertions.assertThat(menuRewards.size()).isEqualTo(2);
     }
 
 
     @Test
-    void findDiscountRewards_메서드는_이벤트들_중_할인혜택_보상만을_찾는다() {
+    void findRewardDiscounts_메서드는_이벤트들_중_할인혜택_보상만을_찾는다() {
         //when
-        List<Reward> menuRewards = events.findDiscountRewards(null);
+        List<Reward> menuRewards = events.findRewardDiscounts(null);
         //then
         Assertions.assertThat(menuRewards.size()).isEqualTo(3);
     }
