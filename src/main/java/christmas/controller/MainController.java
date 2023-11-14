@@ -38,29 +38,40 @@ public class MainController {
 
     public void run() {
         outputView.printStartMessage();
-        CalendarDay selectDay = retryOnException(this::registerVisitDay);
-        Order order = retryOnException(this::registerOrder);
-        Events events = findApplicableEvents(order, selectDay);
-        Plan plan = planService.createPlanner(events, order, selectDay);
-        showPlan(plan, selectDay, order);
+
+        CalendarDay day = retryOnException(this::findDay);
+        Order order = retryOnException(this::orderMenu);
+
+        Events events = findEvents(order, day);
+        Plan plan = buildPlan(events, order, day);
+
+        showDayAndOrder(day, order);
+        showPlan(plan);
         saveCustomer(plan);
     }
 
-    private Order registerOrder() {
-        return orderService.createOrder(inputView.readOrder());
-    }
-
-    private CalendarDay registerVisitDay() {
+    private CalendarDay findDay() {
         return calendarService.findByDay(inputView.readVisitDay());
     }
 
-    private Events findApplicableEvents(Order order, CalendarDay calendarDay) {
-        return eventService.findApplicableEvents(order, calendarDay);
+    private Order orderMenu() {
+        return orderService.createOrder(inputView.readOrder());
     }
 
-    private void showPlan(Plan plan, CalendarDay calendarDay, Order order) {
-        outputView.printEventPreview(calendarDay.getDay());
-        outputView.printOrderMenu(order.toDto().getOrderMenuDtos());
+    private Events findEvents(Order order, CalendarDay calendarDay) {
+        return eventService.findEvents(order, calendarDay);
+    }
+
+    private Plan buildPlan(Events events, Order order, CalendarDay day) {
+        return planService.createPlanner(events, order, day);
+    }
+
+    private void showDayAndOrder(CalendarDay day, Order order) {
+        outputView.printEventPreview(day.getDay());
+        outputView.printOrderMenu(order.toDto().getOrderMenus());
+    }
+
+    private void showPlan(Plan plan) {
         outputView.printBeforeDiscountPrice(planService.findBeforeDiscountPrice(plan));
         outputView.printGiftReward(planService.findGiftReward(plan));
         outputView.printRewards(planService.findRewards(plan));
@@ -70,7 +81,6 @@ public class MainController {
     }
 
     private void saveCustomer(Plan plan) {
-        customerService.saveCustomer(plan);
+        customerService.save(plan);
     }
-
 }
