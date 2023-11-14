@@ -26,14 +26,14 @@ public class PlanService {
     public List<MenuAmountDto> findGiftReward(Plan plan) {
         List<RewardMenu> giftRewards = plan.findMenuRewards();
         return giftRewards.stream()
-                .map(menuReward -> new MenuAmountDto(menuReward.getMenuName(), menuReward.getCount()))
+                .map(menuReward -> createMenuAmountDto(menuReward))
                 .collect(Collectors.toList());
     }
 
     public List<RewardDto> findRewards(Plan plan) {
         List<Reward> discountRewards = plan.findAllReward();
         return discountRewards.stream()
-                .map(reward -> new RewardDto(reward.getName(), reward.getDiscountPrice()))
+                .map(reward -> createRewardDto(reward))
                 .collect(Collectors.toList());
     }
 
@@ -49,4 +49,11 @@ public class PlanService {
         return plan.awardBadge();
     }
 
+    private MenuAmountDto createMenuAmountDto(RewardMenu rewardMenu) {
+        return new MenuAmountDto(rewardMenu.getMenuName(), rewardMenu.getCount());
+    }
+
+    private RewardDto createRewardDto(Reward reward) {
+        return new RewardDto(reward.getName(), reward.getDiscountPrice());
+    }
 }
