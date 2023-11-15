@@ -1,6 +1,9 @@
 package christmas.service;
 
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
 import christmas.domain.order.Order;
+import christmas.domain.order.OrderMenu;
 import christmas.dto.MenuAmountDto;
 import christmas.dto.OrderDto;
 import christmas.repository.MenuRepository;
@@ -30,7 +33,22 @@ public class OrderServiceTest {
         Assertions.assertThat(order.getOrderPrice()).isEqualTo(35500);
     }
 
-    private OrderDto provideOrderDto(){
+    @Test
+    void convertToMenuAmountDtos_메서드는_Order_정보를_주문정보를_출력하기_위한_여러개의_MenuAmountDto_로_변환한다() {
+        //given
+        OrderMenu orderMenu = new OrderMenu(Menu.of("타파스", 10000, MenuType.MAIN), 1);
+        Order order = new Order(List.of(orderMenu));
+        //when
+        List<MenuAmountDto> menuAmountDtos = orderService.convertToMenuAmountDtos(order);
+        //then
+        Assertions.assertThat(menuAmountDtos).hasSize(1);
+
+        MenuAmountDto menuAmountDto1 = menuAmountDtos.get(0);
+        Assertions.assertThat(menuAmountDto1.getMenuName()).isEqualTo("타파스");
+        Assertions.assertThat(menuAmountDto1.getAmount()).isEqualTo(1);
+    }
+
+    private OrderDto provideOrderDto() {
         MenuAmountDto menuWithAmountDto1 = new MenuAmountDto("타파스", 1);
         MenuAmountDto menuWithAmountDto2 = new MenuAmountDto("초코케이크", 2);
         return new OrderDto(List.of(menuWithAmountDto1, menuWithAmountDto2));
