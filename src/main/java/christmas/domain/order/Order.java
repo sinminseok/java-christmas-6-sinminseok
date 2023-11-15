@@ -38,18 +38,23 @@ public class Order {
     }
 
     private void validateMenuAllDrinking(List<OrderMenu> orderMenus) {
-        if (orderMenus.stream().allMatch(orderMenu -> orderMenu.compareMenuType(MenuType.DRINKING))) {
+        if (isAllDrinkingMenu(orderMenus)) {
             throw new ErrorMessage(ORDER_ERROR);
         }
     }
 
-    private Integer calculateMenuCount(List<OrderMenu> orderMenus){
+    private boolean isAllDrinkingMenu(List<OrderMenu> orderMenus) {
+        return orderMenus.stream()
+                .allMatch(orderMenu -> orderMenu.compareMenuType(MenuType.DRINKING));
+    }
+
+    private Integer calculateMenuCount(List<OrderMenu> orderMenus) {
         return orderMenus.stream()
                 .mapToInt(OrderMenu::getCount)
                 .sum();
     }
 
-    public Integer countMenuByMenuType(MenuType menuType){
+    public Integer countMenuByMenuType(MenuType menuType) {
         return orderMenus.stream()
                 .filter(menuItem -> menuItem.compareMenuType(menuType))
                 .mapToInt(OrderMenu::getCount)
