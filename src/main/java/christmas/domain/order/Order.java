@@ -57,13 +57,6 @@ public class Order {
         return orderMenus;
     }
 
-    public OrderDto toDto() {
-        List<MenuAmountDto> collect = orderMenus.stream()
-                .map(orderMenu -> new MenuAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
-                .collect(Collectors.toList());
-        return new OrderDto(collect);
-    }
-
     public Integer getOrderPrice() {
         return orderMenus.stream()
                 .mapToInt(OrderMenu::calculatePrice)

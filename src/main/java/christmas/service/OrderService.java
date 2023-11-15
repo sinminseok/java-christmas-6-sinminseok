@@ -22,6 +22,12 @@ public class OrderService {
         return new Order(orderMenus);
     }
 
+    public List<MenuAmountDto> convertToMenuAmountDtos(Order order) {
+        return order.getOrderMenus().stream()
+                .map(orderMenu -> new MenuAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
+                .collect(Collectors.toList());
+    }
+
     private List<OrderMenu> createOrderMenus(List<MenuAmountDto> menuAmountDtos) {
         return menuAmountDtos.stream()
                 .map(menuAmountDto -> createOrderMenu(menuAmountDto))

@@ -68,7 +68,7 @@ public class MainController {
 
     private void showDayAndOrder(CalendarDay day, Order order) {
         outputView.printEventPreview(day.getDay());
-        outputView.printOrderMenu(order.toDto().getOrderMenus());
+        outputView.printOrderMenu(orderService.convertToMenuAmountDtos(order));
     }
 
     private void showPlan(Plan plan) {
