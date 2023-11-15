@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.domain.day.CalendarDay;
 import christmas.domain.event.Event;
 import christmas.domain.event.EventConditionContext;
+import christmas.domain.event.EventRewardContext;
 import christmas.domain.event.Events;
 import christmas.domain.order.Order;
 import christmas.repository.EventRepository;
@@ -21,7 +22,7 @@ public class EventService {
 
     public Events findEvents(Order order, CalendarDay day) {
         if (order.canApplyEvent()) {
-            findApplicableEvents(order, day);
+            return findApplicableEvents(order, day);
         }
         return new Events(Collections.emptyList());
     }
