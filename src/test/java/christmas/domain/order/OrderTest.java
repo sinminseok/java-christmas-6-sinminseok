@@ -2,32 +2,37 @@ package christmas.domain.order;
 
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OrderTest {
-    private static final Menu menu1 = Menu.of("메뉴1", 5000, MenuType.MAIN);
-    private static final OrderMenu menu2 = new OrderMenu(Menu.of("메뉴2", 5000, MenuType.MAIN), 2);
-    private static final OrderMenu menu3 = new OrderMenu(Menu.of("메뉴3", 5000, MenuType.MAIN), 3);
+
+    private Menu menu1;
+    private OrderMenu menu2;
+    private OrderMenu menu3;
+
+    @BeforeEach
+    void setInit() {
+        menu1 = Menu.of("메뉴1", 5000, MenuType.MAIN);
+        menu2 = new OrderMenu(Menu.of("메뉴2", 5000, MenuType.MAIN), 2);
+        menu3 = new OrderMenu(Menu.of("메뉴3", 5000, MenuType.MAIN), 3);
+    }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 21})
     void 주문생성시_주문메뉴_갯수가_1부터_20_사이가_아닌경우_예외를_발생한다(int size) {
         //given
-        List<OrderMenu> collect = IntStream.range(0, size)
-                .mapToObj(i -> menu2)
-                .collect(Collectors.toList());
-        //when
-        assertThatThrownBy(() -> new Order(collect))
+        OrderMenu orderMenu = new OrderMenu(Menu.of("메뉴", 5000, MenuType.MAIN), size);
+        //when, then
+        assertThatThrownBy(() -> new Order(List.of(orderMenu)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

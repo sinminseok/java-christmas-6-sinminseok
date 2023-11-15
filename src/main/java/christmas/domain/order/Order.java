@@ -24,14 +24,15 @@ public class Order {
         this.orderMenus = orderMenus;
     }
 
-    private void validateDuplicateMenu(List<OrderMenu> orderMenus) {
-        if (orderMenus.stream().map(OrderMenu::getMenuName).distinct().count() != orderMenus.size()) {
+    private void validateMenuSize(List<OrderMenu> orderMenus) {
+        Integer menuCount = calculateMenuCount(orderMenus);
+        if (menuCount < MIN_MENU_RANGE || menuCount > MAX_MENU_RANGE) {
             throw new ErrorMessage(ORDER_ERROR);
         }
     }
 
-    private void validateMenuSize(List<OrderMenu> orderMenus) {
-        if (orderMenus.size() < MIN_MENU_RANGE || orderMenus.size() > MAX_MENU_RANGE) {
+    private void validateDuplicateMenu(List<OrderMenu> orderMenus) {
+        if (orderMenus.stream().map(OrderMenu::getMenuName).distinct().count() != orderMenus.size()) {
             throw new ErrorMessage(ORDER_ERROR);
         }
     }
@@ -42,9 +43,9 @@ public class Order {
         }
     }
 
-    public Integer getOrderPrice() {
+    private Integer calculateMenuCount(List<OrderMenu> orderMenus){
         return orderMenus.stream()
-                .mapToInt(OrderMenu::calculatePrice)
+                .mapToInt(OrderMenu::getCount)
                 .sum();
     }
 
@@ -61,5 +62,11 @@ public class Order {
                 .map(orderMenu -> new MenuAmountDto(orderMenu.getMenuName(), orderMenu.getCount()))
                 .collect(Collectors.toList());
         return new OrderDto(collect);
+    }
+
+    public Integer getOrderPrice() {
+        return orderMenus.stream()
+                .mapToInt(OrderMenu::calculatePrice)
+                .sum();
     }
 }
