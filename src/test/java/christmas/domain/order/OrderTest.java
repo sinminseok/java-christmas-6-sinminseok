@@ -76,4 +76,14 @@ public class OrderTest {
         assertThat(canApplyEvent).isEqualTo(result);
     }
 
+    @Test
+    void countMenuByMenuType_메서드는_주문메뉴_중_지정한_MenuType_과_일치하는_메뉴_갯수를_구한다() {
+        //given
+        Order order = new Order(List.of(menu2, menu3));
+        //when
+        Integer count = order.countMenuByMenuType(MenuType.MAIN);
+        //then
+        assertThat(count).isEqualTo(5);
+    }
+
 }
