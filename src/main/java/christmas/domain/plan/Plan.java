@@ -20,7 +20,6 @@ public class Plan {
         this.calendarDay = calendarDay;
     }
 
-    //todo 고객 기능 구현 후 해당 메서드 위치 고려
     public Integer findBeforeDiscountPrice() {
         return order.getOrderPrice();
     }
