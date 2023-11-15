@@ -30,6 +30,14 @@ public class CalendarDay {
         return dayOfWeek != DayOfWeek.FRIDAY && dayOfWeek != DayOfWeek.SATURDAY;
     }
 
+    public boolean isBeforeOrEqual(LocalDate otherDay) {
+        return this.day.isBefore(otherDay) || this.day.isEqual(otherDay);
+    }
+
+    public boolean isAfterOrEqual(LocalDate otherDay) {
+        return this.day.isAfter(otherDay) || this.day.isEqual(otherDay);
+    }
+
     private DayOfWeek getDayOfWeek(){
         return day.getDayOfWeek();
     }

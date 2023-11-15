@@ -17,7 +17,7 @@ public class EventConditionContext {
     }
 
     public boolean isContainDay(LocalDate startDate, LocalDate endDate) {
-        return !this.calendarDay.getDay().isBefore(startDate) && !this.calendarDay.getDay().isAfter(endDate);
+        return calendarDay.isAfterOrEqual(startDate) && calendarDay.isBeforeOrEqual(endDate);
     }
 
     public boolean isWeekendEvent() {
