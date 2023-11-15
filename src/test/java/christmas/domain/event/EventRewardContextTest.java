@@ -37,7 +37,7 @@ public class EventRewardContextTest {
     @CsvSource(value = {"MAIN, 2", "DESERT, 1"})
     void countMenuByType_메서드는_메뉴타입을_전달받아_주문에_있는_메뉴와_비교해_일치_갯수를_계산한다(MenuType menuType, int result) {
         //when
-        int count = eventRewardContext.countMenuByType(menuType);
+        int count = eventRewardContext.countMenuByMenuType(menuType);
         //then
         assertThat(count).isEqualTo(result);
     }

@@ -17,7 +17,7 @@ public class WeekendEventCondition implements EventCondition {
 
     @Override
     public EventReward giveReward(EventRewardContext context) {
-        int discountPrice = context.countMenuByType(MenuType.MAIN) * DISCOUNT_PRICE_PER_MAIN_MENU;
+        int discountPrice = context.countMenuByMenuType(MenuType.MAIN) * DISCOUNT_PRICE_PER_MAIN_MENU;
         return new EventReward(discountPrice);
     }
 

@@ -19,11 +19,8 @@ public class EventRewardContext {
         this.day = day;
     }
 
-    public int countMenuByType(MenuType menuType) {
-        return order.getOrderMenus().stream()
-                .filter(menuItem -> menuItem.compareMenuType(menuType))
-                .mapToInt(OrderMenu::getCount)
-                .sum();
+    public int countMenuByMenuType(MenuType menuType) {
+        return order.countMenuByMenuType(menuType);
     }
 
     public int calculateDaysBetweenStartAndGivenDate(LocalDate startDate) {

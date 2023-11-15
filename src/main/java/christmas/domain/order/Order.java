@@ -49,6 +49,13 @@ public class Order {
                 .sum();
     }
 
+    public Integer countMenuByMenuType(MenuType menuType){
+        return orderMenus.stream()
+                .filter(menuItem -> menuItem.compareMenuType(menuType))
+                .mapToInt(OrderMenu::getCount)
+                .sum();
+    }
+
     public boolean canApplyEvent() {
         return getOrderPrice() >= MIN_TOTAL_PRICE;
     }

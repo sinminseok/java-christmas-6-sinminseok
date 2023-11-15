@@ -16,7 +16,7 @@ public class WeekDayEventCondition implements EventCondition {
 
     @Override
     public EventReward giveReward(EventRewardContext context) {
-        int discountPrice = context.countMenuByType(MenuType.DESERT) * DISCOUNT_PRICE_PER_DESERT_MENU;
+        int discountPrice = context.countMenuByMenuType(MenuType.DESERT) * DISCOUNT_PRICE_PER_DESERT_MENU;
         return new EventReward(discountPrice);
     }
 
