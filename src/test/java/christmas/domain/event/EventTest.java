@@ -1,10 +1,8 @@
 package christmas.domain.event;
 
 import christmas.domain.day.CalendarDay;
-import christmas.domain.event_condition.*;
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuType;
-import christmas.domain.reward.RewardMenu;
+import christmas.dummy.TestDiscountEventCondition;
+import christmas.dummy.TestGiftEventCondition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -69,40 +67,5 @@ public class EventTest {
         return new EventConditionContext(10000, new CalendarDay(LocalDate.of(2023, 12, day), false));
     }
 
-    public static class TestDiscountEventCondition implements EventCondition {
 
-        @Override
-        public boolean canApply(EventConditionContext eventApplyParameter) {
-            return true;
-        }
-
-        @Override
-        public EventReward giveReward(EventRewardContext eventRewardParameter) {
-            return new EventReward(1000);
-        }
-
-        @Override
-        public EventType checkType() {
-            return EventType.DISCOUNT;
-        }
-    }
-
-
-    public static class TestGiftEventCondition implements EventCondition {
-
-        @Override
-        public boolean canApply(EventConditionContext eventApplyParameter) {
-            return true;
-        }
-
-        @Override
-        public EventReward giveReward(EventRewardContext eventRewardParameter) {
-            return new EventReward(new RewardMenu(Menu.of("증정메뉴", 10000, MenuType.MAIN), 1));
-        }
-
-        @Override
-        public EventType checkType() {
-            return EventType.GIFT;
-        }
-    }
 }

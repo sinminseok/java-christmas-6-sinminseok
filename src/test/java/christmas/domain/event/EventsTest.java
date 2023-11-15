@@ -2,6 +2,8 @@ package christmas.domain.event;
 
 import christmas.domain.reward.Reward;
 import christmas.domain.reward.RewardMenu;
+import christmas.dummy.TestDiscountEventCondition;
+import christmas.dummy.TestGiftEventCondition;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,11 +16,11 @@ public class EventsTest {
 
     @BeforeEach
     void setInit() {
-        Event discountEvent1 = Event.of("테스트 할인 이벤트1", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new EventTest.TestDiscountEventCondition());
-        Event discountEvent2 = Event.of("테스트 할인 이벤트2", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new EventTest.TestDiscountEventCondition());
-        Event discountEvent3 = Event.of("테스트 할인 이벤트3", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new EventTest.TestDiscountEventCondition());
-        Event giftEvent1 = Event.of("테스트 증정 이벤트1", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new EventTest.TestGiftEventCondition());
-        Event giftEvent2 = Event.of("테스트 증정 이벤트2", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new EventTest.TestGiftEventCondition());
+        Event discountEvent1 = Event.of("테스트 할인 이벤트1", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new TestDiscountEventCondition());
+        Event discountEvent2 = Event.of("테스트 할인 이벤트2", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new TestDiscountEventCondition());
+        Event discountEvent3 = Event.of("테스트 할인 이벤트3", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new TestDiscountEventCondition());
+        Event giftEvent1 = Event.of("테스트 증정 이벤트1", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new TestGiftEventCondition());
+        Event giftEvent2 = Event.of("테스트 증정 이벤트2", LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 25), new TestGiftEventCondition());
 
         events = new Events(List.of(discountEvent1, discountEvent2, discountEvent3, giftEvent1, giftEvent2));
     }
