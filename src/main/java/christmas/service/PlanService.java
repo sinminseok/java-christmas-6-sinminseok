@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class PlanService {
 
-    public Plan createPlanner(Events events, Order order, CalendarDay calendarDay) {
+    public Plan createPlan(Events events, Order order, CalendarDay calendarDay) {
         return new Plan(events, order, calendarDay);
     }
 

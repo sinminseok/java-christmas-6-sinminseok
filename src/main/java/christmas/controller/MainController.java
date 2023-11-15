@@ -63,7 +63,7 @@ public class MainController {
     }
 
     private Plan buildPlan(Events events, Order order, CalendarDay day) {
-        return planService.createPlanner(events, order, day);
+        return planService.createPlan(events, order, day);
     }
 
     private void showDayAndOrder(CalendarDay day, Order order) {
